@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portfolio of Ahmed E. Gomaa, Ph.D., Assistant Professor in Synthetic Biology and PI of Prototyping Lab at MSA University.">
+  <meta name="keywords" content="synthetic biology, microbial engineering, automation, AI, prototyping, MSA University">
+  <meta property="og:title" content="Ahmed E. Gomaa, Ph.D. — Portfolio">
+  <meta property="og:description" content="Explore the work of Ahmed E. Gomaa in synthetic biology, automation, and AI-driven prototyping.">
+  <meta property="og:image" content="https://www.example.com/images/profile.jpg">
   <title>Ahmed E. Gomaa, Ph.D. — Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.73.2/dist/3d-force-graph.min.js"></script>
   <style>
     :root{--accent:#7c5cff;--bg:#f4f6f8;--card:#ffffff;--muted:#556;--maxw:1200px}
     *{box-sizing:border-box}
     body{font-family: 'Segoe UI', Tahoma, sans-serif;margin:0;background:var(--bg);color:#122;}
     a{color:var(--accent)}
     header{background:linear-gradient(90deg,#0f1724,#202c49);color:#fff;padding:28px 20px}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:28px}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:1.5rem}
     .brand{display:flex;align-items:center;gap:16px}
     .logo{width:64px;height:64px;border-radius:12px;display:grid;place-items:center;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent),#4dd2ff)}
     h1{margin:0;font-size:1.5rem}
@@ -24,7 +31,7 @@
     .two-col{display:grid;grid-template-columns:2fr 1fr;gap:20px}
     .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     @media (max-width:900px){.two-col{grid-template-columns:1fr}.three-col{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:600px){.three-col{grid-template-columns:1fr}}
+    @media (max-width:600px){.three-col{grid-template-columns:1fr}.wrap{padding:1rem}}
     .muted{color:var(--muted)}
     .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#f0f4ff;color:#123;margin:6px 6px 6px 0;font-weight:600}
     .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
@@ -38,7 +45,7 @@
     ol.pub{padding-left:20px}
     ol.pub li{margin-bottom:10px}
     footer{text-align:center;color:var(--muted);padding:28px 8px}
-    #network-viz{height:600px;border-radius:10px;overflow:hidden}
+    #network-viz, #network-viz-2d{height:600px;border-radius:10px;overflow:hidden;position:relative;}
     .node text{font-size:16px;font-weight:600;fill:#122}
     .node circle{stroke:#fff;stroke-width:3px}
     .link{stroke:#999;stroke-opacity:0.7;stroke-width:2px}
@@ -46,6 +53,9 @@
   </style>
 </head>
 <body>
+  <noscript>
+    <p class="small" style="text-align:center;padding:1rem;">This site uses JavaScript for enhanced features like animations and interactive graphs. Please enable JavaScript for the best experience.</p>
+  </noscript>
   <header>
     <div class="wrap">
       <div class="brand">
@@ -66,8 +76,10 @@
             <p class="small">Microbial bio-engineer working on synthetic biology, metabolic engineering, and automated microbial adaptive laboratory evolution (ALE). I combine automation and AI to accelerate evolutionary engineering and build low-cost prototyping lab equipment including microbial bioreactors and DIY instrumentation.</p>
             <p class="small"><strong>Current:</strong> Assistant Professor (Synthetic Biology), PI of Prototyping Lab — Faculty of Biotechnology, MSA University.</p>
             <p class="small"><strong>Contact:</strong> <a href="mailto:Ahmed.gomaa085@gmail.com">Ahmed.gomaa085@gmail.com</a> • +20 10 6370 1168</p>
-            <p style="margin-top:10px"><a class="badge" href="Ahmed_CV_Jan-2024.pdf" download><i class="fas fa-download"></i> Download CV (PDF)</a>
-            <a class="badge" href="http://www.biordimsa.com/" target="_blank"><i class="fas fa-globe"></i> BioRDI MSA</a></p>
+            <p style="margin-top:10px">
+              <a class="badge" href="./assets/Ahmed_CV_Jan-2024.pdf" download aria-label="Download CV as PDF"><i class="fas fa-download"></i> Download CV (PDF)</a>
+              <a class="badge" href="https://www.biordimsa.com/" target="_blank" aria-label="Visit BioRDI MSA website"><i class="fas fa-globe"></i> BioRDI MSA</a>
+            </p>
           </div>
           <aside class="card" style="height:100%">
             <h3 style="margin-top:0">Quick Facts</h3>
@@ -81,6 +93,11 @@
         <div class="card">
           <h2>Multidisciplinary Expertise</h2>
           <p class="small">Explore the interconnected domains of my work, with a core focus on synthetic biology and DIY innovation, integrating automation, AI, and prototyping.</p>
+          <h3>2D Network Visualization</h3>
+          <p class="small">Interactive 2D graph showing expertise domains (drag nodes to reposition, hover for details).</p>
+          <div id="network-viz-2d"></div>
+          <h3>3D Network Visualization</h3>
+          <p class="small">Interactive 3D graph showing the same expertise domains (drag to rotate, zoom with wheel, drag nodes to move, use arrow keys to rotate).</p>
           <div id="network-viz"></div>
         </div>
       </section>
@@ -156,20 +173,20 @@
           <h2>Featured Projects</h2>
           <div class="gallery" style="margin-top:12px">
             <a class="gallery-item" href="https://projecthub.arduino.cc/Ahmed_EGomaa/diy-3d-bio-printer-884cb5" target="_blank" data-aos="zoom-in">
-              <img src="https://projecthub.arduino.cc/images/diy-3d-bio-printer.jpg" alt="DIY 3D Bio Printer">
+              <img src="./images/diy-3d-bio-printer.jpg" alt="DIY 3D Bio Printer">
               <div class="proj-meta"><h3><i class="fas fa-print"></i> DIY 3D Bio Printer</h3><p class="small">Custom slicer and compact bioprinter for food-printing textures.</p></div>
             </a>
             <a class="gallery-item" href="https://create.arduino.cc/projecthub/Ahmed_EGomaa/microbial-bioreactor-biofermentor-d785e1" target="_blank" data-aos="zoom-in" data-aos-delay="80">
-              <img src="https://create.arduino.cc/images/microbial-bioreactor.jpg" alt="Microbial Bioreactor">
+              <img src="./images/microbial-bioreactor.jpg" alt="Microbial Bioreactor">
               <div class="proj-meta"><h3><i class="fas fa-vials"></i> Microbial Bioreactor</h3><p class="small">Arduino-based fermenter and 6-unit chemostat design for evolution experiments.</p></div>
             </a>
-            <a class="gallery-item" href="http://www.biordimsa.com/lens-free-urine-crystals-detector" target="_blank" data-aos="zoom-in" data-aos-delay="160">
-              <img src="https://via.placeholder.com/640x360?text=Lens-Free+Microscopy" alt="Lens-Free Detector">
+            <a class="gallery-item" href="https://www.biordimsa.com/lens-free-urine-crystals-detector" target="_blank" data-aos="zoom-in" data-aos-delay="160">
+              <img src="./images/lens-free-microscopy.jpg" alt="Lens-Free Urine Crystals Detector">
               <div class="proj-meta"><h3><i class="fas fa-microscope"></i> Lens-Free Urine Crystals Detector</h3><p class="small">Handheld microscope with UVC/RGB illumination and AI analysis for crystal detection.</p></div>
             </a>
-            <a class="gallery-item" href="http://www.biordimsa.com/flowtime-headband" target="_blank" data-aos="zoom-in" data-aos-delay="240">
-              <img src="https://via.placeholder.com/640x360?text=Flowtime+Headband" alt="Flowtime Headband">
-              <div class="proj-meta"><h3><i class="fas fa-head-side-brain"></i> Flowtime Headband</h3><p class="small">GSR-based wearable for anxiety detection and conditioning feedback.</p></div>
+            <a class="gallery-item" href="https://www.biordimsa.com/flowtime-headband" target="_blank" data-aos="zoom-in" data-aos-delay="240">
+              <img src="./images/flowtime-headband.jpg" alt="Flowtime Headband">
+              <div class="proj-meta"><h3><i class="fas fa-brain"></i> Flowtime Headband</h3><p class="small">GSR-based wearable for anxiety detection and conditioning feedback.</p></div>
             </a>
           </div>
         </div>
@@ -217,8 +234,8 @@
             <li>Korean Society for Biotechnology and Bioengineering (KSBB) Spring Meeting: "Electrotransformation of Mixed Algae Culture with Glycerol-3-Phosphate Dehydrogenase Gene from Saccharomyces cerevisiae using PIRES2-EGFP Vector" — Jeju, Korea (Poster presentation, 14 April 2011)</li>
             <li>Korean Society for Biotechnology and Bioengineering (KSBB) Spring Meeting: "Optimization of Microalgae Growth Rate and Oil Content using Human Insulin and Triton WR 1339" — Jeju, Korea (Poster presentation, 14 April 2011)</li>
             <li>Bioenergy Korea Conference 2011 International Symposium: "Optimization of Microalgae Growth Rate and Oil Content using Human Insulin and Triton WR 1339" — Gwangju, Korea (Poster presentation, 16–18 March 2011)</li>
-            <li><a href="https://www.youtube.com/watch?v=7aka8eZmURk" target="_blank">PhD defense & offers — video</a></li>
-            <li><a href="https://www.youtube.com/watch?v=pblI5ZNzRbY" target="_blank">CSH-Asia oral presentation — video</a></li>
+            <li><a href="https://www.youtube.com/watch?v=7aka8eZmURk" target="_blank" aria-label="PhD defense and offers video">PhD defense & offers — video</a></li>
+            <li><a href="https://www.youtube.com/watch?v=pblI5ZNzRbY" target="_blank" aria-label="Cold Spring Harbor Asia oral presentation video">CSH-Asia oral presentation — video</a></li>
           </ul>
         </div>
       </section>
@@ -226,9 +243,9 @@
         <div class="card">
           <h2>Open-source Projects & Code</h2>
           <ul style="margin-top:12px">
-            <li><a href="https://create.arduino.cc/projecthub/Ahmed_EGomaa/microbial-bioreactor-biofermentor-d785e1" target="_blank">Arduino — Microbial Bioreactor (project hub)</a></li>
-            <li><a href="https://projecthub.arduino.cc/Ahmed_EGomaa/diy-3d-bio-printer-884cb5" target="_blank">Arduino — DIY 3D Bio Printer</a></li>
-            <li><a href="https://github.com/Ahmed-EGomaa/DIYEVOSERVER" target="_blank">GitHub — DIYEVOSERVER</a></li>
+            <li><a href="https://create.arduino.cc/projecthub/Ahmed_EGomaa/microbial-bioreactor-biofermentor-d785e1" target="_blank" aria-label="Arduino Microbial Bioreactor project">Arduino — Microbial Bioreactor (project hub)</a></li>
+            <li><a href="https://projecthub.arduino.cc/Ahmed_EGomaa/diy-3d-bio-printer-884cb5" target="_blank" aria-label="Arduino DIY 3D Bio Printer project">Arduino — DIY 3D Bio Printer</a></li>
+            <li><a href="https://github.com/Ahmed-EGomaa/DIYEVOSERVER" target="_blank" aria-label="GitHub DIYEVOSERVER repository">GitHub — DIYEVOSERVER</a></li>
           </ul>
         </div>
       </section>
@@ -237,22 +254,23 @@
           <h2>Contact</h2>
           <p class="small"><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:Ahmed.gomaa085@gmail.com">Ahmed.gomaa085@gmail.com</a></p>
           <p class="small"><i class="fas fa-phone"></i> <strong>Phone:</strong> +20 10 6370 1168</p>
-          <p class="small"><i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ahmed-e-gomaa-8a7b77135/" target="_blank">Profile</a></p>
-          <p class="small"><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="http://www.biordimsa.com/" target="_blank">BioRDI MSA</a></p>
+          <p class="small"><i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ahmed-e-gomaa-8a7b77135/" target="_blank" aria-label="LinkedIn profile">Profile</a></p>
+          <p class="small"><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.biordimsa.com/" target="_blank" aria-label="BioRDI MSA website">BioRDI MSA</a></p>
         </div>
       </section>
     </div>
   </main>
   <footer>
-    <div class="wrap muted">© <span id="year"></span> Ahmed E. Gomaa • Built with HTML, CSS, JS</div>
+    <div class="wrap muted">© <span id="year">2025</span> Ahmed E. Gomaa • Built with HTML, CSS, JS</div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 750, easing: 'ease-out-cubic', once: true });
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 750, easing: 'ease-out-cubic', once: true });
+    }
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // D3.js Network Visualization
-    const width = 800, height = 600;
+    // Shared data for 2D and 3D visualizations
     const nodes = [
       { id: "Synthetic Biology", group: 1, size: 30, desc: "Core focus: Gene regulation, non-coding RNA, metabolic engineering" },
       { id: "DIY Prototyping", group: 1, size: 30, desc: "Building low-cost lab equipment like bioreactors and 3D printers" },
@@ -265,91 +283,119 @@
       { id: "Embedded Systems", group: 3, size: 18, desc: "Arduino, Raspberry Pi for lab automation" }
     ];
     const links = [
-      { source: "Synthetic Biology", target: "DIY Prototyping", strength: 0.6 },
-      { source: "Synthetic Biology", target: "Automation", strength: 0.4 },
-      { source: "Synthetic Biology", target: "AI & ML", strength: 0.4 },
-      { source: "Synthetic Biology", target: "Bioinformatics", strength: 0.5 },
-      { source: "Synthetic Biology", target: "Biofuels", strength: 0.5 },
-      { source: "DIY Prototyping", target: "Automation", strength: 0.5 },
-      { source: "DIY Prototyping", target: "3D Printing", strength: 0.6 },
-      { source: "DIY Prototyping", target: "Microbial Bioreactors", strength: 0.6 },
-      { source: "DIY Prototyping", target: "Embedded Systems", strength: 0.5 },
-      { source: "Automation", target: "Microbial Bioreactors", strength: 0.4 },
-      { source: "AI & ML", target: "Bioinformatics", strength: 0.4 },
-      { source: "3D Printing", target: "Microbial Bioreactors", strength: 0.4 }
+      { source: "Synthetic Biology", target: "DIY Prototyping", strength: 0.6, value: 6 },
+      { source: "Synthetic Biology", target: "Automation", strength: 0.4, value: 4 },
+      { source: "Synthetic Biology", target: "AI & ML", strength: 0.4, value: 4 },
+      { source: "Synthetic Biology", target: "Bioinformatics", strength: 0.5, value: 5 },
+      { source: "Synthetic Biology", target: "Biofuels", strength: 0.5, value: 5 },
+      { source: "DIY Prototyping", target: "Automation", strength: 0.5, value: 5 },
+      { source: "DIY Prototyping", target: "3D Printing", strength: 0.6, value: 6 },
+      { source: "DIY Prototyping", target: "Microbial Bioreactors", strength: 0.6, value: 6 },
+      { source: "DIY Prototyping", target: "Embedded Systems", strength: 0.5, value: 5 },
+      { source: "Automation", target: "Microbial Bioreactors", strength: 0.4, value: 4 },
+      { source: "AI & ML", target: "Bioinformatics", strength: 0.4, value: 4 },
+      { source: "3D Printing", target: "Microbial Bioreactors", strength: 0.4, value: 4 }
     ];
 
-    const svg = d3.select("#network-viz")
-      .append("svg")
-      .attr("width", "100%")
-      .attr("height", height)
-      .attr("viewBox", `0 0 ${width} ${height}`);
+    // 2D Network Visualization (D3.js)
+    try {
+      const width = 800, height = 600;
+      const svg = d3.select("#network-viz-2d")
+        .append("svg")
+        .attr("width", "100%")
+        .attr("height", height)
+        .attr("viewBox", `0 0 ${width} ${height}`);
 
-    const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
-      .force("charge", d3.forceManyBody().strength(-200))
-      .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("collide", d3.forceCollide().radius(d => d.size + 10));
+      const simulation = d3.forceSimulation(nodes)
+        .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
+        .force("charge", d3.forceManyBody().strength(-200))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collide", d3.forceCollide().radius(d => d.size + 10));
 
-    const link = svg.append("g")
-      .attr("class", "link")
-      .selectAll("line")
-      .data(links)
-      .enter().append("line");
+      const link = svg.append("g")
+        .attr("class", "link")
+        .selectAll("line")
+        .data(links)
+        .enter().append("line");
 
-    const node = svg.append("g")
-      .attr("class", "node")
-      .selectAll("g")
-      .data(nodes)
-      .enter().append("g");
+      const node = svg.append("g")
+        .attr("class", "node")
+        .selectAll("g")
+        .data(nodes)
+        .enter().append("g");
 
-    node.append("circle")
-      .attr("r", d => d.size)
-      .attr("fill", d => d.group === 1 ? "#7c5cff" : d.group === 2 ? "#4dd2ff" : "#34d399");
+      node.append("circle")
+        .attr("r", d => d.size)
+        .attr("fill", d => d.group === 1 ? "#7c5cff" : d.group === 2 ? "#4dd2ff" : "#34d399");
 
-    node.append("text")
-      .attr("dy", d => d.size + 12)
-      .attr("text-anchor", "middle")
-      .text(d => d.id);
+      node.append("text")
+        .attr("dy", d => d.size + 12)
+        .attr("text-anchor", "middle")
+        .text(d => d.id);
 
-    const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
+      const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
 
-    node.on("mouseover", function(event, d) {
-      tooltip.transition().duration(200).style("opacity", 0.9);
-      tooltip.html(d.desc).style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
-    })
-    .on("mouseout", function() {
-      tooltip.transition().duration(500).style("opacity", 0);
-    });
+      node.on("mouseover", function(event, d) {
+        tooltip.transition().duration(200).style("opacity", 0.9);
+        tooltip.html(d.desc).style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
+      })
+      .on("mouseout", function() {
+        tooltip.transition().duration(500).style("opacity", 0);
+      });
 
-    node.call(d3.drag()
-      .on("start", dragstarted)
-      .on("drag", dragged)
-      .on("end", dragended));
+      node.call(d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
 
-    simulation.on("tick", () => {
-      link.attr("x1", d => d.source.x)
-          .attr("y1", d => d.source.y)
-          .attr("x2", d => d.target.x)
-          .attr("y2", d => d.target.y);
-      node.attr("transform", d => `translate(${d.x},${d.y})`);
-    });
+      simulation.on("tick", () => {
+        link.attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+      });
 
-    function dragstarted(event) {
-      if (!event.active) simulation.alphaTarget(0.5).restart();
-      event.subject.fx = event.subject.x;
-      event.subject.fy = event.subject.y;
+      function dragstarted(event) {
+        if (!event.active) simulation.alphaTarget(0.5).restart();
+        event.subject.fx = event.subject.x;
+        event.subject.fy = event.subject.y;
+      }
+
+      function dragged(event) {
+        event.subject.fx = event.x;
+        event.subject.fy = event.y;
+      }
+
+      function dragended(event) {
+        if (!event.active) simulation.alphaTarget(0);
+        event.subject.fx = null;
+        event.subject.fy = null;
+      }
+    } catch (error) {
+      console.error('Error initializing 2D graph:', error);
+      document.getElementById('network-viz-2d').innerHTML = '<p class="small">Unable to load 2D visualization. Please try again later.</p>';
     }
 
-    function dragged(event) {
-      event.subject.fx = event.x;
-      event.subject.fy = event.y;
-    }
-
-    function dragended(event) {
-      if (!event.active) simulation.alphaTarget(0);
-      event.subject.fx = null;
-      event.subject.fy = null;
+    // 3D Network Visualization (3d-force-graph)
+    try {
+      const elem = document.getElementById('network-viz');
+      const graph = ForceGraph3D()(elem)
+        .graphData({ nodes, links })
+        .nodeAutoColorBy('group')
+        .nodeVal(d => d.size / 3)
+        .nodeLabel(d => d.desc)
+        .linkWidth(d => d.value / 2)
+        .onNodeDragEnd(node => {
+          node.fx = node.x;
+          node.fy = node.y;
+          node.fz = node.z;
+        });
+      graph.d3Force('charge').strength(-500);
+      graph.d3Force('link').distance(150);
+    } catch (error) {
+      console.error('Error initializing 3D graph:', error);
+      document.getElementById('network-viz').innerHTML = '<p class="small">Unable to load 3D visualization. Please try again later.</p>';
     }
   </script>
 </body>
