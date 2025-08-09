@@ -6,6 +6,7 @@
   <title>Ahmed E. Gomaa, Ph.D. — Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     :root{--accent:#7c5cff;--bg:#f4f6f8;--card:#ffffff;--muted:#556;--maxw:1200px}
     *{box-sizing:border-box}
@@ -20,28 +21,28 @@
     main{max-width:var(--maxw);margin:22px auto;padding:0 20px}
     section{margin-bottom:28px}
     .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 8px 20px rgba(16,24,40,0.06)}
-    /* Grid layouts */
     .two-col{display:grid;grid-template-columns:2fr 1fr;gap:20px}
     .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     @media (max-width:900px){.two-col{grid-template-columns:1fr}.three-col{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:600px){.three-col{grid-template-columns:1fr}}
-    /* Lists & badges */
     .muted{color:var(--muted)}
     .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#f0f4ff;color:#123;margin:6px 6px 6px 0;font-weight:600}
-    /* Gallery */
     .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
     .gallery-item{display:block;border-radius:10px;overflow:hidden;background:#fff;text-decoration:none;color:inherit;box-shadow:0 6px 16px rgba(16,24,40,0.06);transition:transform .25s}
     .gallery-item img{width:100%;height:150px;object-fit:cover}
     .gallery-item:hover{transform:translateY(-6px)}
     .proj-meta{padding:12px}
-    /* Timeline */
     .timeline{border-left:3px solid #e6e9ef;padding-left:16px}
     .timeline-item{margin-bottom:18px}
     .small{font-size:.9rem;color:var(--muted)}
-    /* Publications */
     ol.pub{padding-left:20px}
     ol.pub li{margin-bottom:10px}
     footer{text-align:center;color:var(--muted);padding:28px 8px}
+    #network-viz{height:600px;border-radius:10px;overflow:hidden}
+    .node text{font-size:16px;font-weight:600;fill:#122}
+    .node circle{stroke:#fff;stroke-width:3px}
+    .link{stroke:#999;stroke-opacity:0.7;stroke-width:2px}
+    .tooltip{position:absolute;background:#fff;padding:10px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.2);font-size:1rem;color:#122;pointer-events:none}
   </style>
 </head>
 <body>
@@ -58,7 +59,6 @@
   </header>
   <main>
     <div class="wrap">
-      <!-- Hero / About -->
       <section id="about" data-aos="fade-up">
         <div class="card two-col">
           <div>
@@ -77,7 +77,13 @@
           </aside>
         </div>
       </section>
-      <!-- Research Interests -->
+      <section id="expertise" data-aos="fade-up">
+        <div class="card">
+          <h2>Multidisciplinary Expertise</h2>
+          <p class="small">Explore the interconnected domains of my work, with a core focus on synthetic biology and DIY innovation, integrating automation, AI, and prototyping.</p>
+          <div id="network-viz"></div>
+        </div>
+      </section>
       <section id="research" data-aos="fade-up">
         <div class="card">
           <h2>Research Interests</h2>
@@ -97,7 +103,6 @@
           </div>
         </div>
       </section>
-      <!-- Education -->
       <section id="education" data-aos="fade-up">
         <div class="card">
           <h2>Education</h2>
@@ -109,7 +114,6 @@
           </div>
         </div>
       </section>
-      <!-- Experience -->
       <section id="experience" data-aos="fade-up">
         <div class="card">
           <h2>Experience</h2>
@@ -123,7 +127,6 @@
           </div>
         </div>
       </section>
-      <!-- Awards -->
       <section id="awards" data-aos="fade-up">
         <div class="card">
           <h2>Awards & Fellowships</h2>
@@ -135,7 +138,6 @@
           </ul>
         </div>
       </section>
-      <!-- Skills -->
       <section id="skills" data-aos="fade-up">
         <div class="card">
           <h2>Skills</h2>
@@ -149,7 +151,6 @@
           </div>
         </div>
       </section>
-      <!-- Projects Gallery -->
       <section id="projects" data-aos="fade-up">
         <div class="card">
           <h2>Featured Projects</h2>
@@ -173,7 +174,6 @@
           </div>
         </div>
       </section>
-      <!-- Publications & Patents -->
       <section id="publications" data-aos="fade-up">
         <div class="card">
           <h2>Publications & Patents</h2>
@@ -198,7 +198,6 @@
           </ul>
         </div>
       </section>
-      <!-- Conferences & Media -->
       <section id="conferences" data-aos="fade-up">
         <div class="card">
           <h2>Conferences & Media</h2>
@@ -223,7 +222,6 @@
           </ul>
         </div>
       </section>
-      <!-- Additional Projects / Open Source -->
       <section id="opensource" data-aos="fade-up">
         <div class="card">
           <h2>Open-source Projects & Code</h2>
@@ -234,7 +232,6 @@
           </ul>
         </div>
       </section>
-      <!-- Contact -->
       <section id="contact" data-aos="fade-up">
         <div class="card contact-info">
           <h2>Contact</h2>
@@ -253,6 +250,107 @@
   <script>
     AOS.init({ duration: 750, easing: 'ease-out-cubic', once: true });
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // D3.js Network Visualization
+    const width = 800, height = 600;
+    const nodes = [
+      { id: "Synthetic Biology", group: 1, size: 30, desc: "Core focus: Gene regulation, non-coding RNA, metabolic engineering" },
+      { id: "DIY Prototyping", group: 1, size: 30, desc: "Building low-cost lab equipment like bioreactors and 3D printers" },
+      { id: "Automation", group: 2, size: 22, desc: "Automated microbial evolution (ALE) and lab processes" },
+      { id: "AI & ML", group: 2, size: 22, desc: "Neural networks, TensorFlow for biomolecular analysis" },
+      { id: "3D Printing", group: 2, size: 22, desc: "FDM, DLP, SLA for custom lab hardware" },
+      { id: "Bioinformatics", group: 2, size: 22, desc: "Primer design, genetic annotation, protein predictions" },
+      { id: "Microbial Bioreactors", group: 3, size: 18, desc: "Custom designs for evolution experiments" },
+      { id: "Biofuels", group: 3, size: 18, desc: "Engineering microbes for sustainable energy" },
+      { id: "Embedded Systems", group: 3, size: 18, desc: "Arduino, Raspberry Pi for lab automation" }
+    ];
+    const links = [
+      { source: "Synthetic Biology", target: "DIY Prototyping", strength: 0.6 },
+      { source: "Synthetic Biology", target: "Automation", strength: 0.4 },
+      { source: "Synthetic Biology", target: "AI & ML", strength: 0.4 },
+      { source: "Synthetic Biology", target: "Bioinformatics", strength: 0.5 },
+      { source: "Synthetic Biology", target: "Biofuels", strength: 0.5 },
+      { source: "DIY Prototyping", target: "Automation", strength: 0.5 },
+      { source: "DIY Prototyping", target: "3D Printing", strength: 0.6 },
+      { source: "DIY Prototyping", target: "Microbial Bioreactors", strength: 0.6 },
+      { source: "DIY Prototyping", target: "Embedded Systems", strength: 0.5 },
+      { source: "Automation", target: "Microbial Bioreactors", strength: 0.4 },
+      { source: "AI & ML", target: "Bioinformatics", strength: 0.4 },
+      { source: "3D Printing", target: "Microbial Bioreactors", strength: 0.4 }
+    ];
+
+    const svg = d3.select("#network-viz")
+      .append("svg")
+      .attr("width", "100%")
+      .attr("height", height)
+      .attr("viewBox", `0 0 ${width} ${height}`);
+
+    const simulation = d3.forceSimulation(nodes)
+      .force("link", d3.forceLink(links).id(d => d.id).strength(d => d.strength))
+      .force("charge", d3.forceManyBody().strength(-200))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collide", d3.forceCollide().radius(d => d.size + 10));
+
+    const link = svg.append("g")
+      .attr("class", "link")
+      .selectAll("line")
+      .data(links)
+      .enter().append("line");
+
+    const node = svg.append("g")
+      .attr("class", "node")
+      .selectAll("g")
+      .data(nodes)
+      .enter().append("g");
+
+    node.append("circle")
+      .attr("r", d => d.size)
+      .attr("fill", d => d.group === 1 ? "#7c5cff" : d.group === 2 ? "#4dd2ff" : "#34d399");
+
+    node.append("text")
+      .attr("dy", d => d.size + 12)
+      .attr("text-anchor", "middle")
+      .text(d => d.id);
+
+    const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
+
+    node.on("mouseover", function(event, d) {
+      tooltip.transition().duration(200).style("opacity", 0.9);
+      tooltip.html(d.desc).style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
+    })
+    .on("mouseout", function() {
+      tooltip.transition().duration(500).style("opacity", 0);
+    });
+
+    node.call(d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended));
+
+    simulation.on("tick", () => {
+      link.attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+      node.attr("transform", d => `translate(${d.x},${d.y})`);
+    });
+
+    function dragstarted(event) {
+      if (!event.active) simulation.alphaTarget(0.5).restart();
+      event.subject.fx = event.subject.x;
+      event.subject.fy = event.subject.y;
+    }
+
+    function dragged(event) {
+      event.subject.fx = event.x;
+      event.subject.fy = event.y;
+    }
+
+    function dragended(event) {
+      if (!event.active) simulation.alphaTarget(0);
+      event.subject.fx = null;
+      event.subject.fy = null;
+    }
   </script>
 </body>
 </html>
