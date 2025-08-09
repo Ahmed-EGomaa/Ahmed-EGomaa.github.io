@@ -1,4 +1,3 @@
-<!-- Full Academic Portfolio — Light Professional Style -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,37 +17,30 @@
     .logo{width:64px;height:64px;border-radius:12px;display:grid;place-items:center;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent),#4dd2ff)}
     h1{margin:0;font-size:1.5rem}
     .subtitle{opacity:.9}
-
     main{max-width:var(--maxw);margin:22px auto;padding:0 20px}
     section{margin-bottom:28px}
     .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 8px 20px rgba(16,24,40,0.06)}
-
     /* Grid layouts */
     .two-col{display:grid;grid-template-columns:2fr 1fr;gap:20px}
     .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     @media (max-width:900px){.two-col{grid-template-columns:1fr}.three-col{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:600px){.three-col{grid-template-columns:1fr}}
-
     /* Lists & badges */
     .muted{color:var(--muted)}
     .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#f0f4ff;color:#123;margin:6px 6px 6px 0;font-weight:600}
-
     /* Gallery */
     .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
     .gallery-item{display:block;border-radius:10px;overflow:hidden;background:#fff;text-decoration:none;color:inherit;box-shadow:0 6px 16px rgba(16,24,40,0.06);transition:transform .25s}
     .gallery-item img{width:100%;height:150px;object-fit:cover}
     .gallery-item:hover{transform:translateY(-6px)}
     .proj-meta{padding:12px}
-
     /* Timeline */
     .timeline{border-left:3px solid #e6e9ef;padding-left:16px}
     .timeline-item{margin-bottom:18px}
     .small{font-size:.9rem;color:var(--muted)}
-
     /* Publications */
     ol.pub{padding-left:20px}
     ol.pub li{margin-bottom:10px}
-
     footer{text-align:center;color:var(--muted);padding:28px 8px}
   </style>
 </head>
@@ -64,25 +56,19 @@
       </div>
     </div>
   </header>
-
   <main>
     <div class="wrap">
-
       <!-- Hero / About -->
       <section id="about" data-aos="fade-up">
         <div class="card two-col">
           <div>
             <h2>About</h2>
             <p class="small">Microbial bio-engineer working on synthetic biology, metabolic engineering, and automated microbial adaptive laboratory evolution (ALE). I combine automation and AI to accelerate evolutionary engineering and build low-cost prototyping lab equipment including microbial bioreactors and DIY instrumentation.</p>
-
             <p class="small"><strong>Current:</strong> Assistant Professor (Synthetic Biology), PI of Prototyping Lab — Faculty of Biotechnology, MSA University.</p>
-
             <p class="small"><strong>Contact:</strong> <a href="mailto:Ahmed.gomaa085@gmail.com">Ahmed.gomaa085@gmail.com</a> • +20 10 6370 1168</p>
-
             <p style="margin-top:10px"><a class="badge" href="Ahmed_CV_Jan-2024.pdf" download><i class="fas fa-download"></i> Download CV (PDF)</a>
             <a class="badge" href="http://www.biordimsa.com/" target="_blank"><i class="fas fa-globe"></i> BioRDI MSA</a></p>
           </div>
-
           <aside class="card" style="height:100%">
             <h3 style="margin-top:0">Quick Facts</h3>
             <p class="small"><strong>Location:</strong> Cairo, Egypt</p>
@@ -91,7 +77,6 @@
           </aside>
         </div>
       </section>
-
       <!-- Research Interests -->
       <section id="research" data-aos="fade-up">
         <div class="card">
@@ -112,7 +97,6 @@
           </div>
         </div>
       </section>
-
       <!-- Education -->
       <section id="education" data-aos="fade-up">
         <div class="card">
@@ -125,7 +109,6 @@
           </div>
         </div>
       </section>
-
       <!-- Experience -->
       <section id="experience" data-aos="fade-up">
         <div class="card">
@@ -140,7 +123,6 @@
           </div>
         </div>
       </section>
-
       <!-- Awards -->
       <section id="awards" data-aos="fade-up">
         <div class="card">
@@ -153,7 +135,6 @@
           </ul>
         </div>
       </section>
-
       <!-- Skills -->
       <section id="skills" data-aos="fade-up">
         <div class="card">
@@ -168,7 +149,6 @@
           </div>
         </div>
       </section>
-
       <!-- Projects Gallery -->
       <section id="projects" data-aos="fade-up">
         <div class="card">
@@ -178,17 +158,14 @@
               <img src="https://projecthub.arduino.cc/images/diy-3d-bio-printer.jpg" alt="DIY 3D Bio Printer">
               <div class="proj-meta"><h3><i class="fas fa-print"></i> DIY 3D Bio Printer</h3><p class="small">Custom slicer and compact bioprinter for food-printing textures.</p></div>
             </a>
-
             <a class="gallery-item" href="https://create.arduino.cc/projecthub/Ahmed_EGomaa/microbial-bioreactor-biofermentor-d785e1" target="_blank" data-aos="zoom-in" data-aos-delay="80">
               <img src="https://create.arduino.cc/images/microbial-bioreactor.jpg" alt="Microbial Bioreactor">
               <div class="proj-meta"><h3><i class="fas fa-vials"></i> Microbial Bioreactor</h3><p class="small">Arduino-based fermenter and 6-unit chemostat design for evolution experiments.</p></div>
             </a>
-
             <a class="gallery-item" href="http://www.biordimsa.com/lens-free-urine-crystals-detector" target="_blank" data-aos="zoom-in" data-aos-delay="160">
               <img src="https://via.placeholder.com/640x360?text=Lens-Free+Microscopy" alt="Lens-Free Detector">
               <div class="proj-meta"><h3><i class="fas fa-microscope"></i> Lens-Free Urine Crystals Detector</h3><p class="small">Handheld microscope with UVC/RGB illumination and AI analysis for crystal detection.</p></div>
             </a>
-
             <a class="gallery-item" href="http://www.biordimsa.com/flowtime-headband" target="_blank" data-aos="zoom-in" data-aos-delay="240">
               <img src="https://via.placeholder.com/640x360?text=Flowtime+Headband" alt="Flowtime Headband">
               <div class="proj-meta"><h3><i class="fas fa-head-side-brain"></i> Flowtime Headband</h3><p class="small">GSR-based wearable for anxiety detection and conditioning feedback.</p></div>
@@ -196,8 +173,7 @@
           </div>
         </div>
       </section>
-
-      <!-- Publications & Patents (Full List) -->
+      <!-- Publications & Patents -->
       <section id="publications" data-aos="fade-up">
         <div class="card">
           <h2>Publications & Patents</h2>
@@ -214,7 +190,6 @@
             <li>Gomma AE et al. (2015). <em>An easy PCR-based genome-walking method for getting the unknown 5’ flanking region of a Scenedesmus sp.</em> J Coast Life Med 3:348–351.</li>
             <li>Gomaa AE, Hafez EE et al. (2012). <em>Physiological studies on microalgal culture additives to optimize growth rate and oil content.</em> Bioprocess Biosyst Eng 35:135–143.</li>
           </ol>
-
           <h3 style="margin-top:14px">Patents</h3>
           <ul style="margin-top:8px">
             <li>New method for harvesting of algae from water (2009) — Egypt (Code No. 26053)</li>
@@ -223,20 +198,31 @@
           </ul>
         </div>
       </section>
-
       <!-- Conferences & Media -->
       <section id="conferences" data-aos="fade-up">
         <div class="card">
           <h2>Conferences & Media</h2>
           <ul style="margin-top:12px">
-            <li>Cold Spring Harbor Asia (CSH) — Oral presentation: "Revealing short non-coding RNA’s secondary structure" (Nov 2016)</li>
-            <li>Multiple talks and posters across Asia (2011–2016) — see CV for full list</li>
+            <li>ICGEB Course: "High Content Imaging and Data Science for Virtual Screening and Drug Discovery" — Bled, Slovenia (13–17 May 2019)</li>
+            <li>ICGEB Course: "New Frontiers in Algal Omics" — New Delhi, India (19–30 November 2018)</li>
+            <li>Cold Spring Harbor Asia (CSH): "Revealing short non-coding RNA’s secondary structure using MicroScale Thermophoresis in semi-native conditions" — Suzhou, China (Oral presentation, Nov 2016)</li>
+            <li>10th Asian Fisheries and Aquaculture Forum (10AFAF): "Multigene approaches to increase the growth rate and lipid productivity in Scenedesmus quadricauda" — Yeosu, Korea (Poster presentation, 30 April–4 May 2013)</li>
+            <li>10th Asian Fisheries and Aquaculture Forum (10AFAF): "Nuclear localization signal (NLS) of Simian virus 40 for a stable genetic transformation of Chlorella sp." — Yeosu, Korea (Poster presentation, 30 April–4 May 2013)</li>
+            <li>Annual International Seminar on Marine Science & Aquaculture 2013 (ISOMSA): "Impact of multigene approaches on oil productivity of the microalgae, Scenedesmus quadricauda" — Kota Kinabalu, Sabah, Malaysia (Poster presentation, 19–21 March 2013)</li>
+            <li>10th International Congress on Plant Molecular Biology (ICC): "An Easy PCR-Based Genome-Walking Method for Getting the Unknown Flanking Sequences" — Jeju, Korea (Poster presentation, 21–26 October 2012)</li>
+            <li>10th International Congress on Plant Molecular Biology (ICC): "Toxic Effect of the Overexpressed Large-T Antigen in Microalgae Chlorella sp." — Jeju, Korea (Poster presentation, 21–26 October 2012)</li>
+            <li>10th International Congress on Plant Molecular Biology (ICC): "Effect of SV40 Large T-antigen on the Vector Stability in Microalga Scenedesmus sp." — Jeju, Korea (Poster presentation, 21–26 October 2012)</li>
+            <li>15th International Biotechnology Symposium and Exhibition (IBS): "Stable transformation of microalgae Scenedesmus sp. using SV40 large T-antigen" — Daegu, Korea (Poster presentation, 16–21 September 2012)</li>
+            <li>4th Congress of the International Society for Applied Phycology: "Effect of glycerol-3-phosphate dehydrogenase gene (GPD1) from baker yeast on algae oil content by electrotransformation of mixed algae culture with GPD1-PIRES2-EGFP" — Halifax, Canada (Poster presentation, 19–24 June 2011)</li>
+            <li>4th Congress of the International Society for Applied Phycology: "Physiological studies on microalgal culture additives to optimize growth rate and oil content" — Halifax, Canada (Poster presentation, 19–24 June 2011)</li>
+            <li>Korean Society for Biotechnology and Bioengineering (KSBB) Spring Meeting: "Electrotransformation of Mixed Algae Culture with Glycerol-3-Phosphate Dehydrogenase Gene from Saccharomyces cerevisiae using PIRES2-EGFP Vector" — Jeju, Korea (Poster presentation, 14 April 2011)</li>
+            <li>Korean Society for Biotechnology and Bioengineering (KSBB) Spring Meeting: "Optimization of Microalgae Growth Rate and Oil Content using Human Insulin and Triton WR 1339" — Jeju, Korea (Poster presentation, 14 April 2011)</li>
+            <li>Bioenergy Korea Conference 2011 International Symposium: "Optimization of Microalgae Growth Rate and Oil Content using Human Insulin and Triton WR 1339" — Gwangju, Korea (Poster presentation, 16–18 March 2011)</li>
             <li><a href="https://www.youtube.com/watch?v=7aka8eZmURk" target="_blank">PhD defense & offers — video</a></li>
             <li><a href="https://www.youtube.com/watch?v=pblI5ZNzRbY" target="_blank">CSH-Asia oral presentation — video</a></li>
           </ul>
         </div>
       </section>
-
       <!-- Additional Projects / Open Source -->
       <section id="opensource" data-aos="fade-up">
         <div class="card">
@@ -248,7 +234,6 @@
           </ul>
         </div>
       </section>
-
       <!-- Contact -->
       <section id="contact" data-aos="fade-up">
         <div class="card contact-info">
@@ -259,14 +244,11 @@
           <p class="small"><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="http://www.biordimsa.com/" target="_blank">BioRDI MSA</a></p>
         </div>
       </section>
-
     </div>
   </main>
-
   <footer>
     <div class="wrap muted">© <span id="year"></span> Ahmed E. Gomaa • Built with HTML, CSS, JS</div>
   </footer>
-
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 750, easing: 'ease-out-cubic', once: true });
