@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portfolio of Ahmed E. Gomaa, Ph.D., Assistant Professor in Synthetic Biology and PI of Prototyping Lab at MSA University.">
+  <meta name="keywords" content="synthetic biology, microbial engineering, automation, AI, prototyping, MSA University">
+  <meta property="og:title" content="Ahmed E. Gomaa, Ph.D. — Portfolio">
+  <meta property="og:description" content="Explore the work of Ahmed E. Gomaa in synthetic biology, automation, and AI-driven prototyping.">
+  <meta property="og:image" content="https://www.example.com/images/profile.jpg">
+  <title>Ahmed E. Gomaa, Ph.D. — Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.73.2/dist/3d-force-graph.min.js"></script>
+  <style>
+    :root{--accent:#7c5cff;--bg:#f4f6f8;--card:#ffffff;--muted:#556;--maxw:1200px}
+    *{box-sizing:border-box}
+    body{font-family: 'Segoe UI', Tahoma, sans-serif;margin:0;background:var(--bg);color:#122;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    
+    /* Professional Navigation */
+    .top-nav{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.08);position:sticky;top:0;z-index:100}
+    .nav-container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    .nav-flex{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo-section{display:flex;align-items:center;gap:12px}
+    .nav-logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#4dd2ff);display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px}
+    .nav-title{color:#122;font-size:18px;font-weight:600}
+    .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+    .nav-link{color:#556;font-weight:500;padding:8px 16px;border-radius:6px;transition:all 0.3s ease}
+    .nav-link:hover,.nav-link.active{background:var(--accent);color:#fff;text-decoration:none}
+    
+    /* Mobile Navigation */
+    .mobile-menu{display:none}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid #e6e9ef;padding:20px}
+    .mobile-nav .nav-links{flex-direction:column;gap:10px}
+    .mobile-nav .nav-link{display:block;text-align:center}
+    
+    @media (max-width:768px){
+      .nav-links{display:none}
+      .mobile-menu{display:block;background:none;border:none;font-size:24px;color:#556;cursor:pointer}
+      .mobile-nav.active{display:block}
+    }
+    
+    header{background:linear-gradient(135deg,#0f1724,#202c49);color:#fff;padding:60px 20px}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:1.5rem}
+    .brand{display:flex;align-items:center;gap:20px;justify-content:center;text-align:center}
+    .logo{width:80px;height:80px;border-radius:16px;display:grid;place-items:center;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent),#4dd2ff);font-size:32px}
+    .brand-text h1{margin:0;font-size:2.2rem;margin-bottom:8px}
+    .subtitle{opacity:.9;font-size:1.1rem;line-height:1.4}
+    
+    main{max-width:var(--maxw);margin:30px auto;padding:0 20px}
+    section{margin-bottom:40px}
+    .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(16,24,40,0.08);border:1px solid rgba(0,0,0,0.05)}
+    .two-col{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+    .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    
+    @media (max-width:900px){
+      .two-col{grid-template-columns:1fr}
+      .three-col{grid-template-columns:repeat(2,1fr)}
+      .brand{flex-direction:column;text-align:center}
+    }
+    @media (max-width:600px){
+      .three-col{grid-template-columns:1fr}
+      .wrap{padding:1rem}
+      header{padding:40px 20px}
+      .logo{width:60px;height:60px;font-size:24px}
+      .brand-text h1{font-size:1.8rem}
+    }
+    
+    h2{color:#122;font-size:1.8rem;margin-bottom:20px;border-bottom:3px solid var(--accent);padding-bottom:8px}
+    h3{color:#333;margin-bottom:16px}
+    h4{color:#444;margin-bottom:12px}
+    .muted{color:var(--muted)}
+    .small{font-size:.95rem;color:var(--muted);line-height:1.6}
+    
+    .badge{display:inline-block;padding:8px 16px;border-radius:50px;background:linear-gradient(135deg,var(--accent),#4dd2ff);color:#fff;margin:6px 6px 6px 0;font-weight:600;font-size:14px;box-shadow:0 2px 8px rgba(124,92,255,0.3);transition:transform 0.2s ease}
+    .badge:hover{transform:translateY(-2px);text-decoration:none}
+    
+    .reset-button{display:inline-block;padding:12px 24px;border-radius:50px;background:var(--accent);color:#fff;font-weight:600;cursor:pointer;border:none;margin-top:16px;box-shadow:0 4px 12px rgba(124,92,255,0.3);transition:all 0.3s ease}
+    .reset-button:hover{background:#6a4ee6;transform:translateY(-2px)}
+    
+    .quick-facts{background:linear-gradient(135deg,#f8faff,#e8f2ff);border:1px solid #e1edff}
+    .quick-facts h3{color:var(--accent);margin-top:0}
+    .quick-facts p{margin-bottom:12px}
+    
+    #network-viz, #network-viz-2d{
+      height:600px;
+      border-radius:12px;
+      overflow:hidden;
+      position:relative;
+      background:#fafbfc;
+      border:1px solid #e6e9ef
+    }
+    
+    .node text{font-size:14px;font-weight:600;fill:#122}
+    .node circle{stroke:#fff;stroke-width:3px}
+    .link{stroke:#999;stroke-opacity:0.6;stroke-width:2px}
+    .tooltip{
+      position:absolute;
+      background:#fff;
+      padding:12px 16px;
+      border-radius:8px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.15);
+      font-size:14px;
+      color:#122;
+      pointer-events:none;
+      max-width:250px;
+      border:1px solid #e6e9ef
+    }
+    
+    .cta-section{text-align:center;margin:40px 0}
+    .cta-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),#4dd2ff);
+      color:#fff;
+      padding:16px 32px;
+      border-radius:50px;
+      font-weight:600;
+      box-shadow:0 6px 20px rgba(124,92,255,0.3);
+      transition:all 0.3s ease;
+      border:none;
+      cursor:pointer;
+      font-size:16px
+    }
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 8px 25px rgba(124,92,255,0.4);
+      text-decoration:none
+    }
+    .btn-secondary{
+      background:#fff;
+      color:var(--accent);
+      border:2px solid var(--accent);
+      padding:14px 30px;
+      border-radius:50px;
+      font-weight:600;
+      transition:all 0.3s ease;
+      cursor:pointer;
+      font-size:16px
+    }
+    .btn-secondary:hover{
+      background:var(--accent);
+      color:#fff;
+      transform:translateY(-3px);
+      text-decoration:none
+    }
+    
+    footer{background:#fff;border-top:1px solid #e6e9ef;text-align:center;color:var(--muted);padding:40px 20px;margin-top:60px}
+    
+    /* Enhanced animations */
+    .card{transition:transform 0.3s ease,box-shadow 0.3s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(16,24,40,0.12)}
+    
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    .fade-in{animation:fadeInUp 0.6s ease forwards}
+  </style>
+</head>
+<body>
+  <!-- Professional Navigation -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="nav-flex">
+        <div class="logo-section">
+          <div class="nav-logo">AG</div>
+          <span class="nav-title">Ahmed E. Gomaa, Ph.D.</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="publications.html" class="nav-link">Publications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="mobile-menu" onclick="toggleMobileNav()">☰</button>
+      </div>
+      <div class="mobile-nav" id="mobileNav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="publications.html" class="nav-link">Publications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo">AG</div>
+        <div class="brand-text">
+          <h1>Ahmed E. Gomaa, Ph.D.</h1>
+          <div class="subtitle">Assistant Professor (Molecular Biology) • PI, Prototyping Lab • MSA University</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <!-- About Section -->
+      <section id="about" data-aos="fade-up">
+        <div class="card two-col">
+          <div>
+            <h2>About</h2>
+            <p class="small">Microbial bio-engineer working on synthetic biology, metabolic engineering, and automated microbial adaptive laboratory evolution (ALE). I combine automation and AI to accelerate evolutionary engineering and build low-cost prototyping lab equipment including microbial bioreactors and DIY instrumentation.</p>
+            <p class="small"><strong>Current:</strong> Assistant Professor (Synthetic Biology), PI of Prototyping Lab — Faculty of Biotechnology, MSA University.</p>
+            <p class="small"><strong>Contact:</strong> <a href="mailto:Ahmed.gomaa085@gmail.com">Ahmed.gomaa085@gmail.com</a> • +20 10 6370 1168</p>
+            <p style="margin-top:20px">
+              <a class="badge" href="./assets/Ahmed_CV_Jan-2024.pdf" download aria-label="Download CV as PDF"><i class="fas fa-download"></i> Download CV (PDF)</a>
+              <a class="badge" href="https://www.biordimsa.com/" target="_blank" aria-label="Visit BioRDI MSA website"><i class="fas fa-globe"></i> BioRDI MSA</a>
+            </p>
+          </div>
+          <aside class="card quick-facts" style="height:fit-content">
+            <h3 style="margin-top:0"><i class="fas fa-info-circle"></i> Quick Facts</h3>
+            <p class="small"><strong>Location:</strong> Cairo, Egypt</p>
+            <p class="small"><strong>Languages:</strong> Arabic (native), English (very good), Chinese (beginner)</p>
+            <p class="small"><strong>Specialties:</strong> Bioinformatics, Python, 3D printing, Embedded systems, Neural networks</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Call-to-Action Section -->
+      <section class="cta-section" data-aos="fade-up">
+        <div class="card">
+          <h2>Explore My Work</h2>
+          <p class="small">Discover my journey through education, professional experience, innovative projects, and scientific contributions.</p>
+          <div class="cta-buttons">
+            <a href="projects.html" class="btn-primary">View Projects</a>
+            <a href="publications.html" class="btn-secondary">Browse Publications</a>
+            <a href="contact.html" class="btn-secondary">Get in Touch</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Expertise Visualization -->
+      <section id="expertise" data-aos="fade-up">
+        <div class="card">
+          <h2>Multidisciplinary Expertise</h2>
+          <p class="small">Explore the interconnected domains of my work, with a core focus on synthetic biology and DIY innovation, integrating automation, AI, and prototyping.</p>
+          
+          <h3 style="margin-top:30px">2D Network Visualization</h3>
+          <p class="small">Interactive 2D graph showing expertise domains (drag nodes to reposition and fix in place, hover for details, click Reset View to restore initial layout).</p>
+          <button class="reset-button" onclick="resetView()"><i class="fas fa-refresh"></i> Reset View</button>
+          <div id="network-viz-2d" style="margin-top:20px"></div>
+          
+          <h3 style="margin-top:40px">3D Diamond Lattice Visualization</h3>
+          <p class="small">Interactive 3D visualization of a diamond lattice structure, representing a crystalline arrangement relevant to bioengineered materials (drag to rotate, zoom with wheel, drag atoms to move).</p>
+          <div id="network-viz" style="margin-top:20px"></div>
+        </div>
+      </section>
+
+      <!-- Research Interests -->
+      <section id="research" data-aos="fade-up">
+        <div class="card">
+          <h2>Research Interests</h2>
+          <div class="three-col" style="margin-top:24px">
+            <div class="card" style="text-align:center;padding:24px">
+              <div style="font-size:3rem;color:var(--accent);margin-bottom:16px">🧬</div>
+              <h4>Microbiology & Synthetic Biology</h4>
+              <p class="small">Gene regulation networks, non-coding RNA, metabolic engineering for enhanced microbial production systems.</p>
+            </div>
+            <div class="card" style="text-align:center;padding:24px">
+              <div style="font-size:3rem;color:var(--accent);margin-bottom:16px">⚙️</div>
+              <h4>Automation & Prototyping</h4>
+              <p class="small">DIY lab automation, microbial bioreactor design, automated adaptive laboratory evolution (ALE).</p>
+            </div>
+            <div class="card" style="text-align:center;padding:24px">
+              <div style="font-size:3rem;color:var(--accent);margin-bottom:16px">🚀</div>
+              <h4>Applications</h4>
+              <p class="small">Biofuels production, microbial cell factories, novel lab equipment for research reproducibility.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap muted">© <span id="year">2025</span> Ahmed E. Gomaa • Built with HTML, CSS, JS • <a href="contact.html" style="color:var(--muted)">Contact</a></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS animations
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 750, easing: 'ease-out-cubic', once: true });
+    }
+    
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile navigation toggle
+    function toggleMobileNav() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+    }
+
+    // Data for 2D visualization (Expertise Domains)
+    const nodes2D = [
+      { id: "Synthetic Biology", group: 1, size: 30, desc: "Core focus: Gene regulation, non-coding RNA, metabolic engineering" },
+      { id: "DIY Prototyping", group: 1, size: 30, desc: "Building low-cost lab equipment like bioreactors and 3D printers" },
+      { id: "Automation", group: 1, size: 22, desc: "Automated microbial evolution (ALE) and lab processes" },
+      { id: "AI & ML", group: 2, size: 22, desc: "Neural networks, TensorFlow for biomolecular analysis" },
+      { id: "3D Printing", group: 2, size: 22, desc: "FDM, DLP, SLA for custom lab hardware" },
+      { id: "Bioinformatics", group: 2, size: 22, desc: "Primer design, genetic annotation, protein predictions" },
+      { id: "Microbial Bioreactors", group: 3, size: 18, desc: "Custom designs for evolution experiments" },
+      { id: "Biofuels", group: 3, size: 18, desc: "Engineering microbes for sustainable energy" },
+      { id: "Embedded Systems", group: 3, size: 18, desc: "Arduino, Raspberry Pi for lab automation" }
+    ];
+
+    const links2D = [
+      { source: "Synthetic Biology", target: "DIY Prototyping", strength: 0.6, value: 6 },
+      { source: "Synthetic Biology", target: "Automation", strength: 0.4, value: 4 },
+      { source: "Synthetic Biology", target: "AI & ML", strength: 0.4, value: 4 },
+      { source: "Synthetic Biology", target: "Bioinformatics", strength: 0.5, value: 5 },
+      { source: "Synthetic Biology", target: "Biofuels", strength: 0.5, value: 5 },
+      { source: "DIY Prototyping", target: "Automation", strength: 0.5, value: 5 },
+      { source: "DIY Prototyping", target: "3D Printing", strength: 0.6, value: 6 },
+      { source: "DIY Prototyping", target: "Microbial Bioreactors", strength: 0.6, value: 6 },
+      { source: "DIY Prototyping", target: "Embedded Systems", strength: 0.5, value: 5 },
+      { source: "Automation", target: "Microbial Bioreactors", strength: 0.4, value: 4 },
+      { source: "AI & ML", target: "Bioinformatics", strength: 0.4, value: 4 },
+      { source: "3D Printing", target: "Microbial Bioreactors", strength: 0.4, value: 4 }
+    ];
+
+    // Data for 3D visualization (Diamond Lattice Structure)
+    const nodes3D = [
+      { id: "C1", group: 1, size: 12, desc: "Carbon at lattice corner" },
+      { id: "C2", group: 1, size: 12, desc: "Carbon at lattice face center" },
+      { id: "C3", group: 1, size: 12, desc: "Carbon at lattice face center" },
+      { id: "C4", group: 1, size: 12, desc: "Carbon at lattice face center" },
+      { id: "C5", group: 1, size: 12, desc: "Carbon at tetrahedral site" },
+      { id: "C6", group: 1, size: 12, desc: "Carbon at tetrahedral site" },
+      { id: "C7", group: 1, size: 12, desc: "Carbon at tetrahedral site" },
+      { id: "C8", group: 1, size: 12, desc: "Carbon at tetrahedral site" }
+    ];
+
+    const links3D = [
+      { source: "C1", target: "C5", value: 1 },
+      { source: "C1", target: "C6", value: 1 },
+      { source: "C1", target: "C7", value: 1 },
+      { source: "C1", target: "C8", value: 1 },
+      { source: "C2", target: "C5", value: 1 },
+      { source: "C2", target: "C6", value: 1 },
+      { source: "C3", target: "C5", value: 1 },
+      { source: "C3", target: "C7", value: 1 },
+      { source: "C4", target: "C6", value: 1 },
+      { source: "C4", target: "C8", value: 1 }
+    ];
+
+    // 2D Network Visualization (D3.js)
+    let simulation;
+    try {
+      const width = 800, height = 600;
+      const svg = d3.select("#network-viz-2d")
+        .append("svg")
+        .attr("width", "100%")
+        .attr("height", height)
+        .attr("viewBox", `0 0 ${width} ${height}`);
+
+      simulation = d3.forceSimulation(nodes2D)
+        .force("link", d3.forceLink(links2D).id(d => d.id).strength(d => d.strength))
+        .force("charge", d3.forceManyBody().strength(-600))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collide", d3.forceCollide().radius(d => d.size + 25));
+
+      const link = svg.append("g")
+        .attr("class", "link")
+        .selectAll("line")
+        .data(links2D)
+        .enter().append("line");
+
+      const node = svg.append("g")
+        .attr("class", "node")
+        .selectAll("g")
+        .data(nodes2D)
+        .enter().append("g");
+
+      node.append("circle")
+        .attr("r", d => d.size)
+        .attr("fill", d => d.group === 1 ? "#7c5cff" : d.group === 2 ? "#4dd2ff" : "#34d399");
+
+      node.append("text")
+        .attr("dy", d => d.size + 14)
+        .attr("text-anchor", "middle")
+        .style("font-size", "12px")
+        .style("font-weight", "600")
+        .text(d => d.id);
+
+      const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
+
+      node.on("mouseover", function(event, d) {
+        tooltip.transition().duration(200).style("opacity", 0.9);
+        tooltip.html(d.desc).style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
+      })
+      .on("mouseout", function() {
+        tooltip.transition().duration(500).style("opacity", 0);
+      });
+
+      node.call(d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
+
+      simulation.on("tick", () => {
+        link.attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+      });
+
+      function dragstarted(event) {
+        if (!event.active) simulation.alphaTarget(0.5).restart();
+        event.subject.fx = event.subject.x;
+        event.subject.fy = event.subject.y;
+      }
+
+      function dragged(event) {
+        event.subject.fx = event.x;
+        event.subject.fy = event.y;
+      }
+
+      function dragended(event) {
+        if (!event.active) simulation.alphaTarget(0);
+      }
+
+      window.resetView = function() {
+        nodes2D.forEach(node => {
+          node.fx = null;
+          node.fy = null;
+        });
+        simulation.alpha(1).restart();
+      };
+    } catch (error) {
+      console.error('Error initializing 2D graph:', error);
+      document.getElementById('network-viz-2d').innerHTML = '<p class="small">Unable to load 2D visualization. Please try again later.</p>';
+    }
+
+    // 3D Diamond Lattice Visualization
+    try {
+      const elem = document.getElementById('network-viz');
+      const graph = ForceGraph3D({ three: THREE })(elem)
+        .graphData({ nodes: nodes3D, links: links3D })
+        .nodeAutoColorBy('group')
+        .nodeVal(d => d.size / 3)
+        .nodeLabel(d => d.desc)
+        .linkWidth(d => d.value / 2)
+        .onNodeDragEnd(node => {
+          node.fx = node.x;
+          node.fy = node.y;
+          node.fz = node.z;
+        });
+      graph.d3Force('charge').strength(-500);
+      graph.d3Force('link').distance(40);
+    } catch (error) {
+      console.error('Error initializing 3D graph:', error);
+      document.getElementById('network-viz').innerHTML = '<p class="small">Unable to load 3D diamond lattice visualization. Please try again later.</p>';
+    }
+  </script>
+</body>
+</html>
