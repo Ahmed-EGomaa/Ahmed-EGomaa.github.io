@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Professional experience of Ahmed E. Gomaa, Ph.D. - Academic positions, research roles, and industry experience.">
+  <title>Experience - Ahmed E. Gomaa, Ph.D.</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--accent:#7c5cff;--bg:#f4f6f8;--card:#ffffff;--muted:#556;--maxw:1200px}
+    *{box-sizing:border-box}
+    body{font-family: 'Segoe UI', Tahoma, sans-serif;margin:0;background:var(--bg);color:#122;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    
+    .top-nav{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.08);position:sticky;top:0;z-index:100}
+    .nav-container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    .nav-flex{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo-section{display:flex;align-items:center;gap:12px}
+    .nav-logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#4dd2ff);display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px}
+    .nav-title{color:#122;font-size:18px;font-weight:600}
+    .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+    .nav-link{color:#556;font-weight:500;padding:8px 16px;border-radius:6px;transition:all 0.3s ease}
+    .nav-link:hover,.nav-link.active{background:var(--accent);color:#fff;text-decoration:none}
+    
+    .mobile-menu{display:none}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid #e6e9ef;padding:20px}
+    .mobile-nav .nav-links{flex-direction:column;gap:10px}
+    .mobile-nav .nav-link{display:block;text-align:center}
+    
+    @media (max-width:768px){
+      .nav-links{display:none}
+      .mobile-menu{display:block;background:none;border:none;font-size:24px;color:#556;cursor:pointer}
+      .mobile-nav.active{display:block}
+    }
+    
+    .page-header{background:linear-gradient(135deg,#ff6b6b,#ff8e53);color:#fff;padding:80px 20px 60px;text-align:center}
+    .page-header h1{font-size:3rem;margin:0;margin-bottom:16px}
+    .page-header p{font-size:1.2rem;opacity:0.9;max-width:600px;margin:0 auto}
+    
+    main{max-width:var(--maxw);margin:40px auto;padding:0 20px}
+    .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(16,24,40,0.08);border:1px solid rgba(0,0,0,0.05);margin-bottom:30px}
+    
+    h2{color:#122;font-size:1.8rem;margin-bottom:20px;border-bottom:3px solid var(--accent);padding-bottom:8px}
+    .small{font-size:.95rem;color:var(--muted);line-height:1.6}
+    
+    .experience-grid{display:grid;gap:30px}
+    .exp-card{background:#fff;border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.05);position:relative;transition:transform 0.3s ease}
+    .exp-card:hover{transform:translateY(-5px)}
+    .exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(135deg,var(--accent),#4dd2ff);border-radius:16px 16px 0 0}
+    
+    .exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+    .job-title{color:#122;font-size:1.4rem;font-weight:700;margin-bottom:4px}
+    .company{color:var(--accent);font-size:1.1rem;font-weight:600;margin-bottom:4px}
+    .duration{color:#fff;background:linear-gradient(135deg,#ff6b6b,#ff8e53);padding:6px 12px;border-radius:20px;font-size:0.85rem;font-weight:600;white-space:nowrap}
+    .location{color:var(--muted);font-size:0.9rem;margin-bottom:16px}
+    
+    .responsibilities{margin-top:16px}
+    .responsibilities ul{padding-left:20px}
+    .responsibilities li{margin-bottom:8px;line-height:1.6}
+    
+    .awards-section{background:linear-gradient(135deg,#f8faff,#e8f2ff);border:2px solid #e1edff}
+    .award-item{background:#fff;border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,0.05);border-left:4px solid #ffd700}
+    .award-title{color:#122;font-weight:700;margin-bottom:8px}
+    .award-org{color:var(--accent);font-weight:600;margin-bottom:4px}
+    .award-year{color:var(--muted);font-size:0.9rem}
+    
+    .skills-highlight{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:20px}
+    .skill-tag{background:linear-gradient(135deg,var(--accent),#4dd2ff);color:#fff;padding:8px 16px;border-radius:20px;text-align:center;font-weight:600;font-size:0.9rem}
+    
+    footer{background:#fff;border-top:1px solid #e6e9ef;text-align:center;color:var(--muted);padding:40px 20px;margin-top:60px}
+    
+    @media (max-width:600px){
+      .page-header h1{font-size:2.2rem}
+      .exp-header{flex-direction:column}
+      .duration{align-self:flex-start;margin-top:8px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="nav-flex">
+        <div class="logo-section">
+          <div class="nav-logo">AG</div>
+          <span class="nav-title">Ahmed E. Gomaa, Ph.D.</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link active">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="publications.html" class="nav-link">Publications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="mobile-menu" onclick="toggleMobileNav()">☰</button>
+      </div>
+      <div class="mobile-nav" id="mobileNav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link active">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="publications.html" class="nav-link">Publications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1><i class="fas fa-briefcase"></i> Professional Experience</h1>
+    <p>Building innovative solutions at the intersection of biology and technology</p>
+  </header>
+
+  <main>
+    <section data-aos="fade-up">
+      <div class="card">
+        <h2>Current Positions</h2>
+        <div class="experience-grid">
+          <div class="exp-card" data-aos="fade-up">
+            <div class="exp-header">
+              <div>
+                <div class="job-title">Manager — RDI Unit</div>
+                <div class="company"><i class="fas fa-building"></i> Faculty of Biotechnology, MSA University</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</div>
+              </div>
+              <div class="duration">Sep 2022 – Present</div>
+            </div>
+            <div class="responsibilities">
+              <p class="small">Leading the Research, Development & Innovation unit, overseeing cutting-edge biotechnology research initiatives and fostering collaboration between academia and industry.</p>
+              <ul class="small">
+                <li>Strategic planning and execution of biotechnology research programs</li>
+                <li>Managing multi-million dollar research budgets and grants</li>
+                <li>Building partnerships with international research institutions</li>
+                <li>Supervising PhD and MSc students in advanced biotechnology projects</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="exp-header">
+              <div>
+                <div class="job-title">Assistant Professor (Synthetic Biology)</div>
+                <div class="company"><i class="fas fa-university"></i> Faculty of Biotechnology, MSA University</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</div>
+              </div>
+              <div class="duration">Feb 2022 – Present</div>
+            </div>
+            <div class="responsibilities">
+              <p class="small">Teaching advanced courses in synthetic biology while leading groundbreaking research in microbial engineering and automation. Principal Investigator of the Prototyping Lab.</p>
+              <ul class="small">
+                <li>Course instruction: Synthetic Biology, Microbial Engineering, Bioinformatics</li>
+                <li>Research focus: Automated microbial evolution, DIY lab equipment design</li>
+                <li>Published 3+ peer-reviewed papers since appointment</li>
+                <li>Established the first student-led prototyping lab in Egypt</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="card">
+        <h2>Previous Experience</h2>
+        <div class="experience-grid">
+          <div class="exp-card" data-aos="fade-up">
+            <div class="exp-header">
+              <div>
+                <div class="job-title">CTO — MAKTECH3D</div>
+                <div class="company"><i class="fas fa-industry"></i> Technology Startup</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</div>
+              </div>
+              <div class="duration">July 2022 – Feb 2023</div>
+            </div>
+            <div class="responsibilities">
+              <p class="small">Chief Technology Officer responsible for developing 3D printing solutions and biotechnology applications for healthcare and research sectors.</p>
+              <ul class="small">
+                <li>Led development of custom 3D bioprinters for medical applications</li>
+                <li>Managed technical team of 8+ engineers and developers</li>
+                <li>Secured 3 major contracts with healthcare institutions</li>
+                <li>Developed proprietary slicer software for bioprinting applications</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="exp-header">
+              <div>
+                <div class="job-title">Postdoctoral Researcher</div>
+                <div class="company"><i class="fas fa-university"></i> UNIST (Ulsan National Institute of Science and Technology)</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Ulsan, South Korea</div>
+              </div>
+              <div class="duration">Jan 2020 – Feb 2022</div>
+            </div>
+            <div class="responsibilities">
+              <p class="small">Advanced research in synthetic biology and metabolic engineering with focus on industrial biotechnology applications and automation systems.</p>
+              <ul class="small">
+                <li>Developed novel microbial strains for biofuel production</li>
+                <li>Designed automated fermentation systems for industrial applications</li>
+                <li>Published 4 high-impact research papers</li>
+                <li>Collaborated with Samsung Biologics on industrial projects</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="exp-header">
+              <div>
+                <div class="job-title">Postdoctoral Researcher</div>
+                <div class="company"><i class="fas fa-university"></i> Tsinghua University</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Beijing, China</div>
+              </div>
+              <div class="duration">Feb 2018 – Jan 2020</div>
+            </div>
+            <div class="responsibilities">
+              <p class="small">Pioneering research in extremophile biology and stress response mechanisms, with applications in biotechnology and astrobiology.</p>
+              <ul class="small">
+                <li>Characterized novel stress-resistance proteins in Deinococcus radiodurans</li>
+                <li>Developed protein expression systems for industrial enzymes</li>
+                <li>Mentored 5+ graduate students in molecular biology techniques</li>
