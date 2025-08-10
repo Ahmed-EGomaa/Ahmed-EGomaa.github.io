@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Contact Ahmed E. Gomaa, Ph.D. - Get in touch for collaboration, research opportunities, and professional inquiries.">
+  <title>Contact - Ahmed E. Gomaa, Ph.D.</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--accent:#7c5cff;--bg:#f4f6f8;--card:#ffffff;--muted:#556;--maxw:1200px}
+    *{box-sizing:border-box}
+    body{font-family: 'Segoe UI', Tahoma, sans-serif;margin:0;background:var(--bg);color:#122;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    
+    .top-nav{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.08);position:sticky;top:0;z-index:100}
+    .nav-container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    .nav-flex{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo-section{display:flex;align-items:center;gap:12px}
+    .nav-logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#4dd2ff);display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px}
+    .nav-title{color:#122;font-size:18px;font-weight:600}
+    .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+    .nav-link{color:#556;font-weight:500;padding:8px 16px;border-radius:6px;transition:all 0.3s ease}
+    .nav-link:hover,.nav-link.active{background:var(--accent);color:#fff;text-decoration:none}
+    
+    .mobile-menu{display:none}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid #e6e9ef;padding:20px}
+    .mobile-nav .nav-links{flex-direction:column;gap:10px}
+    .mobile-nav .nav-link{display:block;text-align:center}
+    
+    @media (max-width:768px){
+      .nav-links{display:none}
+      .mobile-menu{display:block;background:none;border:none;font-size:24px;color:#556;cursor:pointer}
+      .mobile-nav.active{display:block}
+    }
+    
+    .page-header{background:linear-gradient(135deg,#ff9a9e,#fecfef,#fecfef);color:#fff;padding:80px 20px 60px;text-align:center}
+    .page-header h1{font-size:3rem;margin:0;margin-bottom:16px}
+    .page-header p{font-size:1.2rem;opacity:0.9;max-width:600px;margin:0 auto}
+    
+    main{max-width:var(--maxw);margin:40px auto;padding:0 20px}
+    .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(16,24,40,0.08);border:1px solid rgba(0,0,0,0.05);margin-bottom:30px}
+    
+    h2{color:#122;font-size:1.8rem;margin-bottom:20px;border-bottom:3px solid var(--accent);padding-bottom:8px}
+    .small{font-size:.95rem;color:var(--muted);line-height:1.6}
+    
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    @media (max-width:768px){
+      .contact-grid{grid-template-columns:1fr}
+    }
+    
+    .contact-method{display:flex;align-items:center;gap:16px;padding:20px;background:linear-gradient(135deg,#f8faff,#e8f2ff);border:1px solid #e1edff;border-radius:12px;margin-bottom:16px;transition:transform 0.3s ease}
+    .contact-method:hover{transform:translateY(-4px)}
+    .contact-icon{width:50px;height:50px;background:var(--accent);color:#fff;border-radius:12px;display:grid;place-items:center;font-size:20px}
+    .contact-info h4{color:#122;margin-bottom:4px}
+    .contact-info p{color:var(--muted);margin:0}
+    
+    .contact-form{background:#fff}
+    .form-group{margin-bottom:24px}
+    .form-group label{display:block;margin-bottom:8px;font-weight:600;color:#122}
+    .form-group input,
+    .form-group textarea,
+    .form-group select{width:100%;padding:12px 16px;border:2px solid #e1edff;border-radius:8px;font-size:16px;font-family:inherit;transition:border-color 0.3s ease}
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,92,255,0.1)}
+    .form-group textarea{height:120px;resize:vertical}
+    
+    .submit-btn{background:linear-gradient(135deg,var(--accent),#4dd2ff);color:#fff;padding:14px 32px;border:none;border-radius:50px;font-size:16px;font-weight:600;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(124,92,255,0.3)}
+    .submit-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(124,92,255,0.4)}
+    
+    .social-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+    .social-link{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:24px;transition:all 0.3s ease;text-decoration:none}
+    .social-link:hover{transform:translateY(-4px) scale(1.1);text-decoration:none}
+    .social-link.email{background:linear-gradient(135deg,#ea4335,#d33)}
+    .social-link.linkedin{background:linear-gradient(135deg,#0077b5,#005885)}
+    .social-link.github{background:linear-gradient(135deg,#333,#000)}
+    .social-link.website{background:linear-gradient(135deg,var(--accent),#4dd2ff)}
+    
+    .office-hours{background:linear-gradient(135deg,#e8f5e8,#d4edda);border:2px solid #c3e6cb;border-radius:12px;padding:24px}
+    .hours-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #c3e6cb}
+    .hours-item:last-child{border-bottom:none}
+    
+    .location-info{background:linear-gradient(135deg,#fff3cd,#ffeaa7);border:2px solid #ffd60a;border-radius:12px;padding:24px;text-align:center}
+    .location-info h3{color:#122;margin-bottom:12px}
+    .location-info address{font-style:normal;color:var(--muted);line-height:1.6}
+    
+    .visitor-counter-section{background:linear-gradient(135deg,#f0f4ff,#e1edff);border:2px solid #c7d7ff;border-radius:12px;padding:24px;text-align:center}
+    .counter-btn{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:25px;cursor:pointer;font-weight:600;transition:all 0.3s ease}
+    .counter-btn:hover{background:#6a4ee6;transform:translateY(-2px)}
+    .counter-display{display:none;margin-top:16px;padding:16px;background:#fff;border-radius:8px}
+    
+    footer{background:#fff;border-top:1px solid #e6e9ef;text-align:center;color:var(--muted);padding:40px 20px;margin-top:60px}
+    
+    @media (max-width:600px){
+      .page-header h1{font-size:2.2rem}
+      .social-links{gap:12px}
+      .social-link{width:50px;height:50px;font-size:20px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="nav-flex">
+        <div class="logo-section">
+          <div class="nav-logo">AG</div>
+          <span class="nav-title">Ahmed E. Gomaa, Ph.D.</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="publications.html" class="nav-link">Publications</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+        <button class="mobile-menu" onclick="toggleMobileNav()">☰</button>
+      </div>
+      <div class="mobile-nav" id="mobileNav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="publications.html" class="nav-link">Publications</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1><i class="fas fa-envelope"></i> Get In Touch</h1>
+    <p>Let's collaborate on innovative biotechnology solutions and research opportunities</p>
+  </header>
+
+  <main>
+    <section data-aos="fade-up">
+      <div class="contact-grid">
+        <div>
+          <div class="card">
+            <h2>Contact Information</h2>
+            
+            <div class="contact-method" data-aos="fade-right">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-info">
+                <h4>Email</h4>
+                <p><a href="mailto:Ahmed.gomaa085@gmail.com">Ahmed.gomaa085@gmail.com</a></p>
+              </div>
+            </div>
+
+            <div class="contact-method" data-aos="fade-right" data-aos-delay="100">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-info">
+                <h4>Phone</h4>
+                <p>+20 10 6370 1168</p>
+              </div>
+            </div>
+
+            <div class="contact-method" data-aos="fade-right" data-aos-delay="200">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-info">
+                <h4>Location</h4>
+                <p>Cairo, Egypt</p>
+              </div>
+            </div>
+
+            <div class="contact-method" data-aos="fade-right" data-aos-delay="300">
+              <div class="contact-icon">
+                <i class="fas fa-university"></i>
+              </div>
+              <div class="contact-info">
+                <h4>Institution</h4>
+                <p>MSA University, Faculty of Biotechnology</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Connect on Social Media</h2>
+            <div class="social-links">
+              <a href="mailto:Ahmed.gomaa085@gmail.com" class="social-link email" data-aos="zoom-in">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/ahmed-e-gomaa-8a7b77135/" target="_blank" class="social-link linkedin" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/Ahmed-EGomaa" target="_blank" class="social-link github" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.biordimsa.com/" target="_blank" class="social-link website" data-aos="zoom-in" data-aos-delay="300">
+                <i class="fas fa-globe"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card contact-form">
+            <h2>Send a Message</h2>
+            <form onsubmit="handleSubmit(event)" data-aos="fade-left">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="organization">Organization/Institution</label>
+                <input type="text" id="organization" name="organization">
+              </div>
+              
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Select a subject</option>
+                  <option value="collaboration">Research Collaboration</option>
+                  <option value="consultation">Consultation Inquiry</option>
+                  <option value="speaking">Speaking Engagement</option>
+                  <option value="student">Student Inquiry</option>
+                  <option value="media">Media/Press Inquiry</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" placeholder="Please describe your inquiry or collaboration idea..." required></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="contact-grid">
+        <div>
+          <div class="card office-hours">
+            <h2><i class="fas fa-clock"></i> Office Hours</h2>
+            <p class="small" style="margin-bottom:16px">Available for meetings and consultations:</p>
+            <div class="hours-item">
+              <span><strong>Monday - Wednesday</strong></span>
+              <span>9:00 AM - 4:00 PM</span>
+            </div>
+            <div class="hours-item">
+              <span><strong>Thursday</strong></span>
+              <span>10:00 AM - 2:00 PM</span>
+            </div>
+            <div class="hours-item">
+              <span><strong>Friday - Sunday</strong></span>
+              <span>By Appointment</span>
+            </div>
+            <p class="small" style="margin-top:16px;color:var(--accent)">
+              <i class="fas fa-info-circle"></i> Please email in advance to schedule a meeting
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card location-info">
+            <h2><i class="fas fa-building"></i> Office Location</h2>
+            <address>
+              <strong>MSA University</strong><br>
+              Faculty of Biotechnology<br>
+              Prototyping Lab<br>
+              Cairo, Egypt
+            </address>
+            <p class="small" style="margin-top:16px">
+              <i class="fas fa-directions"></i> Detailed directions available upon request
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="card visitor-counter-section">
+        <h2><i class="fas fa-chart-bar"></i> Site Analytics</h2>
+        <p class="small">For administrative access to site statistics</p>
+        <button class="counter-btn" onclick="showCounter()">View Visitor Count (Admin)</button>
+        <div class="counter-display" id="counterDisplay">
+          <a href="https://www.hitwebcounter.com" target="_blank">
+            <img src="https://hitwebcounter.com/counter/counter.php?page=21366417&style=0038&nbdigits=7&type=page&initCount=0" 
+                 title="Counter Widget" alt="Visit counter For Websites" border="0" />
+          </a>
+          <button class="counter-btn" style="margin-top:12px" onclick="hideCounter()">Hide Counter</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© <span id="year">2025</span> Ahmed E. Gomaa • Built with HTML, CSS, JS</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 750, easing: 'ease-out-cubic', once: true });
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    function toggleMobileNav() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+    }
+    
+    function handleSubmit(event) {
+      event.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(event.target);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const organization = formData.get('organization');
+      const subject = formData.get('subject');
+      const message = formData.get('message');
+      
+      // Create email link (this is a demo - in production you'd send to a server)
+      const emailSubject = `Contact Form: ${subject}`;
+      const emailBody = `Name: ${name}\nEmail: ${email}\nOrganization: ${organization || 'Not specified'}\n\nMessage:\n${message}`;
+      const mailtoLink = `mailto:Ahmed.gomaa085@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+      
+      // Show success message
+      alert('Thank you for your message! Your email client should open with the pre-filled message. In a production website, this would be sent directly to the server.');
+      
+      // Reset form
+      event.target.reset();
+    }
+    
+    function showCounter() {
+      const password = window.prompt('Enter admin password to view visitor count:');
+      if (password === '12345') {
+        document.getElementById('counterDisplay').style.display = 'block';
+      } else if (password !== null) {
+        alert('Incorrect password.');
+      }
+    }
+    
+    function hideCounter() {
+      document.getElementById('counterDisplay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
