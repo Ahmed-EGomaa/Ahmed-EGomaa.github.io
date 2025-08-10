@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Scientific publications and research contributions by Ahmed E. Gomaa, Ph.D. - Peer-reviewed papers, patents, and conference presentations.">
+  <title>Publications - Ahmed E. Gomaa, Ph.D.</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--accent:#7c5cff;--bg:#f4f6f8;--card:#ffffff;--muted:#556;--maxw:1200px}
+    *{box-sizing:border-box}
+    body{font-family: 'Segoe UI', Tahoma, sans-serif;margin:0;background:var(--bg);color:#122;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    
+    .top-nav{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.08);position:sticky;top:0;z-index:100}
+    .nav-container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    .nav-flex{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo-section{display:flex;align-items:center;gap:12px}
+    .nav-logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#4dd2ff);display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px}
+    .nav-title{color:#122;font-size:18px;font-weight:600}
+    .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+    .nav-link{color:#556;font-weight:500;padding:8px 16px;border-radius:6px;transition:all 0.3s ease}
+    .nav-link:hover,.nav-link.active{background:var(--accent);color:#fff;text-decoration:none}
+    
+    .mobile-menu{display:none}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid #e6e9ef;padding:20px}
+    .mobile-nav .nav-links{flex-direction:column;gap:10px}
+    .mobile-nav .nav-link{display:block;text-align:center}
+    
+    @media (max-width:768px){
+      .nav-links{display:none}
+      .mobile-menu{display:block;background:none;border:none;font-size:24px;color:#556;cursor:pointer}
+      .mobile-nav.active{display:block}
+    }
+    
+    .page-header{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:80px 20px 60px;text-align:center}
+    .page-header h1{font-size:3rem;margin:0;margin-bottom:16px}
+    .page-header p{font-size:1.2rem;opacity:0.9;max-width:600px;margin:0 auto}
+    
+    main{max-width:var(--maxw);margin:40px auto;padding:0 20px}
+    .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(16,24,40,0.08);border:1px solid rgba(0,0,0,0.05);margin-bottom:30px}
+    
+    h2{color:#122;font-size:1.8rem;margin-bottom:20px;border-bottom:3px solid var(--accent);padding-bottom:8px}
+    .small{font-size:.95rem;color:var(--muted);line-height:1.6}
+    
+    .publication-item{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;border-left:4px solid var(--accent);box-shadow:0 4px 15px rgba(0,0,0,0.06);transition:transform 0.3s ease}
+    .publication-item:hover{transform:translateX(8px)}
+    
+    .pub-title{color:#122;font-size:1.1rem;font-weight:700;margin-bottom:8px;line-height:1.4}
+    .pub-authors{color:var(--muted);font-size:0.95rem;margin-bottom:6px}
+    .pub-authors .author-highlight{color:var(--accent);font-weight:600}
+    .pub-journal{color:#666;font-style:italic;margin-bottom:8px}
+    .pub-year{color:var(--accent);font-weight:600;background:linear-gradient(135deg,#f8faff,#e8f2ff);padding:4px 12px;border-radius:12px;display:inline-block;font-size:0.85rem}
+    
+    .pub-links{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+    .pub-link{background:var(--accent);color:#fff;padding:6px 12px;border-radius:16px;font-size:0.8rem;font-weight:600;transition:transform 0.2s ease}
+    .pub-link:hover{transform:translateY(-2px);text-decoration:none}
+    
+    .patent-item{background:linear-gradient(135deg,#fff5e6,#ffeaa7);border:2px solid #fdcb6e;border-radius:12px;padding:20px;margin-bottom:16px}
+    .patent-title{color:#122;font-weight:700;margin-bottom:6px}
+    .patent-number{color:#e17055;font-weight:600;font-size:0.9rem}
+    
+    .conference-item{background:linear-gradient(135deg,#e8f5e8,#d4edda);border:2px solid #c3e6cb;border-radius:12px;padding:20px;margin-bottom:16px}
+    .conf-title{color:#122;font-weight:700;margin-bottom:6px}
+    .conf-venue{color:#28a745;font-weight:600}
+    .conf-location{color:var(--muted);font-size:0.9rem}
+    
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;margin-top:20px}
+    .stat-card{background:linear-gradient(135deg,var(--accent),#4dd2ff);color:#fff;padding:20px;border-radius:12px;text-align:center}
+    .stat-number{font-size:2rem;font-weight:700;margin-bottom:4px}
+    .stat-label{font-size:0.9rem;opacity:0.9}
+    
+    .search-filter{background:linear-gradient(135deg,#f8faff,#e8f2ff);border:1px solid #e1edff;border-radius:12px;padding:20px;margin-bottom:24px}
+    .filter-input{width:100%;padding:12px 16px;border:2px solid #e1edff;border-radius:8px;font-size:16px;transition:border-color 0.3s ease}
+    .filter-input:focus{outline:none;border-color:var(--accent)}
+    
+    footer{background:#fff;border-top:1px solid #e6e9ef;text-align:center;color:var(--muted);padding:40px 20px;margin-top:60px}
+    
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="nav-flex">
+        <div class="logo-section">
+          <div class="nav-logo">AG</div>
+          <span class="nav-title">Ahmed E. Gomaa, Ph.D.</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="publications.html" class="nav-link active">Publications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="mobile-menu" onclick="toggleMobileNav()">☰</button>
+      </div>
+      <div class="mobile-nav" id="mobileNav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="publications.html" class="nav-link active">Publications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1><i class="fas fa-book-open"></i> Publications & Research</h1>
+    <p>Scientific contributions to synthetic biology, microbial engineering, and biotechnology</p>
+  </header>
+
+  <main>
+    <section data-aos="fade-up">
+      <div class="card">
+        <h2>Research Impact</h2>
+        <div class="stats-grid">
+          <div class="stat-card" data-aos="zoom-in">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Publications</div>
+          </div>
+          <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Patents</div>
+          </div>
+          <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Conferences</div>
+          </div>
+          <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Years Active</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="card">
+        <div class="search-filter">
+          <h3 style="margin-top:0;color:var(--accent)"><i class="fas fa-search"></i> Search Publications</h3>
+          <input type="text" class="filter-input" placeholder="Search by title, authors, or keywords..." onkeyup="filterPublications(this.value)">
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="card">
+        <h2>Peer-Reviewed Publications</h2>
+        <div id="publications-list">
+          
+          <div class="publication-item" data-aos="fade-left" data-keywords="microbial psychology behavior antibiotic resistance">
+            <div class="pub-title">Microbial psychology: Behavior, associative learning, and relation to antibiotic resistance</div>
+            <div class="pub-authors">Shalapy M, Darwish AMG, Mbarek HN, González T, Hajjaj H, <span class="author-highlight">Gomaa AE</span>, Hafez EE</div>
+            <div class="pub-journal">J Appl Pharm Sci, 2023; 13(02):001–010</div>
+            <div class="pub-year">2023</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> DOI</a>
+            </div>
+          </div>
+
+          <div class="publication-item" data-aos="fade-left" data-aos-delay="50" data-keywords="candida antarctica lipase corynebacterium molecular cloning">
+            <div class="pub-title">Molecular Cloning and Expression of Candida Antarctica lipase B in Corynebacterium genus</div>
+            <div class="pub-authors">Tamara González, Hasna Nait M Barek, <span class="author-highlight">Gomaa AE</span>, Hassan Hajjaj, Chen Zhen, Liu Dehua</div>
+            <div class="pub-journal">Korean Journal of Microbiology and Biotechnology, 47(4):546–554</div>
+            <div class="pub-year">2019</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> View Paper</a>
+            </div>
+          </div>
+
+          <div class="publication-item" data-aos="fade-left" data-aos-delay="100" data-keywords="SV40 T-antigen microalgae scenedesmus chlorella">
+            <div class="pub-title">Impact of SV0 T-antigen on two multiple fission microalgae species Scendesmus qudricauda and Chlorella vulgaris</div>
+            <div class="pub-authors"><span class="author-highlight">Gomaa AE</span>, Seung Hwan Yang</div>
+            <div class="pub-journal">IJASC 7:1, 48-63</div>
+            <div class="pub-year">2018</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+            </div>
+          </div>
+
+          <div class="publication-item" data-aos="fade-left" data-aos-delay="150" data-keywords="vector-free allele exchange mutagenesis genome editing bacterial">
+            <div class="pub-title">An enhanced vector-free allele exchange (VFAE) mutagenesis protocol for genome editing in a wide range of bacterial species</div>
+            <div class="pub-authors"><span class="author-highlight">Gomaa AE</span> et al.</div>
+            <div class="pub-journal">AMB Express 7:125</div>
+            <div class="pub-year">2017</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> DOI</a>
+              <a href="#" class="pub-link"><i class="fas fa-citation"></i> Cite</a>
+            </div>
+          </div>
+
+          <div class="publication-item" data-aos="fade-left" data-aos-delay="200" data-keywords="targeted mutagenesis pseudomonas vector-free">
+            <div class="pub-title">High-frequency targeted mutagenesis in Pseudomonas stutzeri using a vector-free allele-exchange protocol</div>
+            <div class="pub-authors"><span class="author-highlight">Gomaa AE</span> et al.</div>
+            <div class="pub-journal">J Microbiol Biotechnol 27:335–341</div>
+            <div class="pub-year">2017</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> DOI</a>
+            </div>
+          </div>
+
+          <div class="publication-item" data-aos="fade-left" data-aos-delay="250" data-keywords="DrwH LEA protein deinococcus radiodurans oxidative stress">
+            <div class="pub-title">DrwH, a novel WHy domain-containing hydrophobic LEA5C protein from Deinococcus radiodurans, protects enzymatic activity under oxidative stress</div>
+            <div class="pub-authors">Jiang S. et al. (including <span class="author-highlight">Gomaa AE</span>)</div>
+            <div class="pub-journal">Sci. Rep. 7(1):9281</div>
+            <div class="pub-year">2017</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> Nature</a>
+            </div>
+          </div>
+
+          <div class="publication-item" data-aos="fade-left" data-aos-delay="300" data-keywords="oil production malonyl-CoA glycerol scenedesmus">
+            <div class="pub-title">Improvement in Oil Production by Increasing Malonyl-CoA and Glycerol-3-Phosphate Pools in Scenedesmus quadricauda</div>
+            <div class="pub-authors"><span class="author-highlight">Gomma AE</span> et al.</div>
+            <div class="pub-journal">Indian J Microbiol 55:447–55</div>
+            <div class="pub-year">2015</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> Springer</a>
+            </div>
+          </div>
+
+          <div class="publication-item" data-aos="fade-left" data-aos-delay="350" data-keywords="direct cloning protocol transformant selection">
+            <div class="pub-title">Direct Cloning Protocol for Rapid Transformant Selection</div>
+            <div class="pub-authors"><span class="author-highlight">Gomaa AE</span> et al.</div>
+            <div class="pub-journal">Res J Microbiol 10:551–556</div>
+            <div class="pub-year">2015</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+            </div>
+          </div>
+
+          <div class="publication-item" data-aos="fade-left" data-aos-delay="400" data-keywords="marker-free nuclear transformation chlorella vulgaris">
+            <div class="pub-title">Development of stable marker-free nuclear transformation strategy in the green microalga Chlorella vulgaris</div>
+            <div class="pub-authors"><span class="author-highlight">Gomma A</span> et al.</div>
+            <div class="pub-journal">African J. Biotechnol. 14:2715–2723</div>
+            <div class="pub-year">2015</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> View Online</a>
+            </div>
+          </div>
+
+          <div class="publication-item" data-aos="fade-left" data-aos-delay="450" data-keywords="PCR genome-walking scenedesmus 5 flanking region">
+            <div class="pub-title">An easy PCR-based genome-walking method for getting the unknown 5' flanking region of a Scenedesmus sp.</div>
+            <div class="pub-authors"><span class="author-highlight">Gomma AE</span> et al.</div>
+            <div class="pub-journal">J Coast Life Med 3:348–351</div>
+            <div class="pub-year">2015</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+            </div>
+          </div>
+
+          <div class="publication-item" data-aos="fade-left" data-aos-delay="500" data-keywords="microalgal culture additives growth rate oil content">
+            <div class="pub-title">Physiological studies on microalgal culture additives to optimize growth rate and oil content</div>
+            <div class="pub-authors"><span class="author-highlight">Gomaa AE</span>, Hafez EE et al.</div>
+            <div class="pub-journal">Bioprocess Biosyst Eng 35:135–143</div>
+            <div class="pub-year">2012</div>
+            <div class="pub-links">
+              <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> Springer</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="card">
+        <h2><i class="fas fa-lightbulb"></i> Patents</h2>
+        
+        <div class="patent-item" data-aos="fade-right">
+          <div class="patent-title">New method for harvesting of algae from water</div>
+          <div class="patent-number">Egypt Patent Code No. 26053 • 2009</div>
+          <p class="small">Innovative method for efficient algae harvesting from aquatic environments with applications in biofuel production and water treatment.</p>
+        </div>
+
+        <div class="patent-item" data-aos="fade-right" data-aos-delay="100">
+          <div class="patent-title">Room Temperature automated Chemical crude extractor</div>
+          <div class="patent-number">Egypt App. No. 2023/1560 • 2023</div>
+          <p class="small">Automated system for chemical extraction processes at room temperature, reducing energy costs and improving efficiency.</p>
+        </div>
+
+        <div class="patent-item" data-aos="fade-right" data-aos-delay="200">
+          <div class="patent-title">Portable IoT-based thermal cycler for PCR purposes</div>
+          <div class="patent-number">Egypt App. 2023/1548 • 2023</div>
+          <p class="small">Compact, internet-connected thermal cycler for PCR applications with remote monitoring and control capabilities.</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="card">
+        <h2><i class="fas fa-users"></i> Selected Conference Presentations</h2>
+        
+        <div class="conference-item" data-aos="fade-up">
+          <div class="conf-title">High Content Imaging and Data Science for Virtual Screening and Drug Discovery</div>
+          <div class="conf-venue">ICGEB Course</div>
+          <div class="conf-location">Bled, Slovenia • May 13-17, 2019</div>
+        </div>
+
+        <div class="conference-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="conf-title">New Frontiers in Algal Omics</div>
+          <div class="conf-venue">ICGEB Course</div>
+          <div class="conf-location">New Delhi, India • November 19-30, 2018</div>
+        </div>
+
+        <div class="conference-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="conf-title">Revealing short non-coding RNA's secondary structure using MicroScale Thermophoresis in semi-native conditions</div>
+          <div class="conf-venue">Cold Spring Harbor Asia (Oral Presentation)</div>
+          <div class="conf-location">Suzhou, China • November 2016</div>
+        </div>
+
+        <div class="conference-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="conf-title">Multigene approaches to increase the growth rate and lipid productivity in Scenedesmus quadricauda</div>
+          <div class="conf-venue">10th Asian Fisheries and Aquaculture Forum (Poster)</div>
+          <div class="conf-location">Yeosu, Korea • April 30 - May 4, 2013</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© <span id="year">2025</span> Ahmed E. Gomaa • <a href="contact.html" style="color:var(--muted)">Contact</a></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 750, easing: 'ease-out-cubic', once: true });
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    function toggleMobileNav() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+    }
+    
+    function filterPublications(searchTerm) {
+      const publications = document.querySelectorAll('.publication-item');
+      const term = searchTerm.toLowerCase();
+      
+      publications.forEach(pub => {
+        const title = pub.querySelector('.pub-title').textContent.toLowerCase();
+        const authors = pub.querySelector('.pub-authors').textContent.toLowerCase();
+        const keywords = pub.getAttribute('data-keywords') || '';
+        
+        if (title.includes(term) || authors.includes(term) || keywords.includes(term)) {
+          pub.style.display = 'block';
+        } else {
+          pub.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
