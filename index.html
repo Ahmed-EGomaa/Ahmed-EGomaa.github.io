@@ -52,6 +52,7 @@
     .node circle{stroke:#fff;stroke-width:3px}
     .link{stroke:#999;stroke-opacity:0.7;stroke-width:2px}
     .tooltip{position:absolute;background:#fff;padding:10px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.2);font-size:1rem;color:#122;pointer-events:none}
+    #visitor-counter{display:none}
   </style>
 </head>
 <body>
@@ -261,7 +262,13 @@
           <p class="small"><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.biordimsa.com/" target="_blank" aria-label="BioRDI MSA website">BioRDI MSA</a></p>
         </div>
       </section>
-      <!-- Visitor Counter Section -->
+      <!-- Admin Button to View Counter -->
+      <section id="admin-counter" data-aos="fade-up">
+        <div class="card">
+          <button id="view-counter-btn" class="reset-button">View Visitor Count (Admin Only)</button>
+        </div>
+      </section>
+      <!-- Visitor Counter Section (Hidden by Default) -->
       <section id="visitor-counter" data-aos="fade-up">
         <div class="card">
           <h2>Visitor Counter</h2>
@@ -270,6 +277,7 @@
           <a href="https://www.hitwebcounter.com" target="_blank">
             <img src="https://hitwebcounter.com/counter/counter.php?page=21366417&style=0038&nbdigits=7&type=page&initCount=0" title="Counter Widget" alt="Visit counter For Websites" border="0" />
           </a>
+          <button id="hide-counter-btn" class="reset-button" style="margin-top:10px">Hide Counter</button>
         </div>
       </section>
     </div>
@@ -283,6 +291,19 @@
       AOS.init({ duration: 750, easing: 'ease-out-cubic', once: true });
     }
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Admin Counter Button Logic
+    document.getElementById('view-counter-btn').addEventListener('click', () => {
+      const password = window.prompt('Enter password to view visitor count:');
+      if (password === '12345') {
+        document.getElementById('visitor-counter').style.display = 'block';
+        document.getElementById('hide-counter-btn').addEventListener('click', () => {
+          document.getElementById('visitor-counter').style.display = 'none';
+        });
+      } else {
+        alert('Incorrect password.');
+      }
+    });
 
     // Data for 2D visualization (Expertise Domains)
     const nodes2D = [
