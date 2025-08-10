@@ -52,11 +52,6 @@
     .node circle{stroke:#fff;stroke-width:3px}
     .link{stroke:#999;stroke-opacity:0.7;stroke-width:2px}
     .tooltip{position:absolute;background:#fff;padding:10px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.2);font-size:1rem;color:#122;pointer-events:none}
-    #view-stats-btn { padding: 10px 20px; background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; display: block; margin: 20px auto; }
-    #view-stats-btn:hover { background: #6a4ee6; }
-    #stats-section { background: var(--card); border-radius: 12px; padding: 18px; margin-top: 20px; box-shadow: 0 8px 20px rgba(16,24,40,0.06); display: none; }
-    #lock-stats-btn { padding: 8px 16px; background: #ff5c5c; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
-    #lock-stats-btn:hover { background: #e64e4e; }
   </style>
 </head>
 <body>
@@ -266,8 +261,17 @@
           <p class="small"><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.biordimsa.com/" target="_blank" aria-label="BioRDI MSA website">BioRDI MSA</a></p>
         </div>
       </section>
-      <button id="view-stats-btn">View Visitor Stats (Admin Only)</button>
-      <div id="stats-section" style="display: none;"></div>
+      <!-- Visitor Counter Section -->
+      <section id="visitor-counter" data-aos="fade-up">
+        <div class="card">
+          <h2>Visitor Counter</h2>
+          <p class="small">Total page views:</p>
+          <!-- hitwebcounter Code START -->
+          <a href="https://www.hitwebcounter.com" target="_blank">
+            <img src="https://hitwebcounter.com/counter/counter.php?page=21366417&style=0038&nbdigits=7&type=page&initCount=0" title="Counter Widget" alt="Visit counter For Websites" border="0" />
+          </a>
+        </div>
+      </section>
     </div>
   </main>
   <footer>
@@ -330,84 +334,6 @@
       { source: "C4", target: "C6", value: 1 },
       { source: "C4", target: "C8", value: 1 }
     ];
-
-    // Visitor Counter and Location Tracking
-    const BIN_URL = 'https://api.jsonbin.io/v3/b/YOUR_JSONBIN_BIN_ID';
-    const API_KEY = 'YOUR_JSONBIN_API_KEY';
-
-    async function getVisitorIP() {
-      try {
-        const response = await fetch('https://api.ipify.org?format=json');
-        const data = await response.json();
-        return data.ip;
-      } catch (error) {
-        console.error('Error fetching IP:', error);
-        return null;
-      }
-    }
-
-    async function getVisitorCountry(ip) {
-      try {
-        const response = await fetch(`https://ipapi.co/${ip}/json/`);
-        const data = await response.json();
-        return data.country_name || 'Unknown';
-      } catch (error) {
-        console.error('Error fetching country:', error);
-        return 'Unknown';
-      }
-    }
-
-    async function fetchBinData() {
-      try {
-        const response = await fetch(BIN_URL, {
-          headers: { 'X-Master-Key': API_KEY }
-        });
-        const result = await response.json();
-        if (result && result.record && typeof result.record === 'object') {
-          return result.record;
-        } else {
-          console.warn('Invalid or missing record in JSONBin response, using default:', result);
-          return { totalVisits: 0, countries: {} };
-        }
-      } catch (error) {
-        console.error('Error fetching bin data:', error);
-        return { totalVisits: 0, countries: {} };
-      }
-    }
-
-    async function updateBinData(data) {
-      try {
-        await fetch(BIN_URL, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Master-Key': API_KEY
-          },
-          body: JSON.stringify(data)
-        });
-      } catch (error) {
-        console.error('Error updating bin data:', error);
-      }
-    }
-
-    async function trackVisitor() {
-      const ip = await getVisitorIP();
-      if (!ip) return;
-
-      const country = await getVisitorCountry(ip);
-      const binData = await fetchBinData();
-
-      binData.totalVisits = (binData.totalVisits || 0) + 1;
-      binData.countries = binData.countries || {};
-      binData.countries[country] = (binData.countries[country] || 0) + 1;
-
-      await updateBinData(binData);
-    }
-
-    // Run visitor tracking on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      trackVisitor();
-    });
 
     // 2D Network Visualization (D3.js)
     let simulation;
@@ -516,32 +442,6 @@
       console.error('Error initializing 3D graph:', error);
       document.getElementById('network-viz').innerHTML = '<p class="small">Unable to load 3D diamond lattice visualization. Please try again later.</p>';
     }
-
-    // Stats viewing functionality
-    const viewStatsBtn = document.getElementById('view-stats-btn');
-    const statsSection = document.getElementById('stats-section');
-
-    viewStatsBtn.addEventListener('click', async () => {
-      const password = window.prompt('Enter password to view visitor stats:');
-      if (password === '12345') {
-        const binData = await fetchBinData();
-        statsSection.innerHTML = `
-          <p>Total Visits: ${binData.totalVisits}</p>
-          <p>Visits by Country:</p>
-          <ul>
-            ${Object.entries(binData.countries).map(([country, count]) => `<li>${country}: ${count}</li>`).join('')}
-          </ul>
-          <button id="lock-stats-btn">Lock Stats</button>
-        `;
-        statsSection.style.display = 'block';
-        document.getElementById('lock-stats-btn').addEventListener('click', () => {
-          statsSection.style.display = 'none';
-          statsSection.innerHTML = '';
-        });
-      } else {
-        alert('Incorrect password.');
-      }
-    });
   </script>
 </body>
 </html>
