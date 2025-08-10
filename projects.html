@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Innovative projects by Ahmed E. Gomaa, Ph.D. - DIY bioprinters, microbial bioreactors, and cutting-edge biotechnology solutions.">
+  <title>Projects - Ahmed E. Gomaa, Ph.D.</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--accent:#7c5cff;--bg:#f4f6f8;--card:#ffffff;--muted:#556;--maxw:1200px}
+    *{box-sizing:border-box}
+    body{font-family: 'Segoe UI', Tahoma, sans-serif;margin:0;background:var(--bg);color:#122;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    
+    .top-nav{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.08);position:sticky;top:0;z-index:100}
+    .nav-container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    .nav-flex{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo-section{display:flex;align-items:center;gap:12px}
+    .nav-logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#4dd2ff);display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px}
+    .nav-title{color:#122;font-size:18px;font-weight:600}
+    .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+    .nav-link{color:#556;font-weight:500;padding:8px 16px;border-radius:6px;transition:all 0.3s ease}
+    .nav-link:hover,.nav-link.active{background:var(--accent);color:#fff;text-decoration:none}
+    
+    .mobile-menu{display:none}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid #e6e9ef;padding:20px}
+    .mobile-nav .nav-links{flex-direction:column;gap:10px}
+    .mobile-nav .nav-link{display:block;text-align:center}
+    
+    @media (max-width:768px){
+      .nav-links{display:none}
+      .mobile-menu{display:block;background:none;border:none;font-size:24px;color:#556;cursor:pointer}
+      .mobile-nav.active{display:block}
+    }
+    
+    .page-header{background:linear-gradient(135deg,#4ecdc4,#44a08d);color:#fff;padding:80px 20px 60px;text-align:center}
+    .page-header h1{font-size:3rem;margin:0;margin-bottom:16px}
+    .page-header p{font-size:1.2rem;opacity:0.9;max-width:600px;margin:0 auto}
+    
+    main{max-width:var(--maxw);margin:40px auto;padding:0 20px}
+    .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(16,24,40,0.08);border:1px solid rgba(0,0,0,0.05);margin-bottom:30px}
+    
+    h2{color:#122;font-size:1.8rem;margin-bottom:20px;border-bottom:3px solid var(--accent);padding-bottom:8px}
+    .small{font-size:.95rem;color:var(--muted);line-height:1.6}
+    
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px}
+    .project-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,0.1);transition:all 0.3s ease;border:1px solid rgba(0,0,0,0.05)}
+    .project-card:hover{transform:translateY(-10px);box-shadow:0 15px 35px rgba(0,0,0,0.15)}
+    
+    .project-image{width:100%;height:200px;background:linear-gradient(135deg,#667eea,#764ba2);position:relative;overflow:hidden}
+    .project-image img{width:100%;height:100%;object-fit:cover}
+    .project-image::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(102,126,234,0.8),rgba(118,75,162,0.8))}
+    .project-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:3rem;color:#fff;z-index:2}
+    
+    .project-content{padding:24px}
+    .project-title{color:#122;font-size:1.3rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+    .project-description{color:var(--muted);line-height:1.6;margin-bottom:16px}
+    
+    .project-tech{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+    .tech-tag{background:linear-gradient(135deg,#f8faff,#e8f2ff);color:var(--accent);padding:4px 12px;border-radius:12px;font-size:0.8rem;font-weight:600;border:1px solid #e1edff}
+    
+    .project-links{display:flex;gap:12px;flex-wrap:wrap}
+    .project-link{background:linear-gradient(135deg,var(--accent),#4dd2ff);color:#fff;padding:8px 16px;border-radius:20px;font-size:0.9rem;font-weight:600;transition:transform 0.3s ease;box-shadow:0 2px 8px rgba(124,92,255,0.3)}
+    .project-link:hover{transform:translateY(-2px);text-decoration:none}
+    .project-link.secondary{background:#fff;color:var(--accent);border:2px solid var(--accent)}
+    .project-link.secondary:hover{background:var(--accent);color:#fff}
+    
+    .featured-project{grid-column:1/-1;background:linear-gradient(135deg,#f8faff,#e8f2ff);border:2px solid #e1edff}
+    .featured-badge{background:linear-gradient(135deg,#ffd700,#ffed4e);color:#122;padding:6px 16px;border-radius:20px;font-size:0.8rem;font-weight:700;display:inline-block;margin-bottom:16px}
+    
+    .opensource-section{background:linear-gradient(135deg,#e8f5e8,#f0fff0);border:2px solid #c8e6c9}
+    
+    footer{background:#fff;border-top:1px solid #e6e9ef;text-align:center;color:var(--muted);padding:40px 20px;margin-top:60px}
+    
+    @media (max-width:600px){
+      .page-header h1{font-size:2.2rem}
+      .projects-grid{grid-template-columns:1fr}
+      .featured-project{grid-column:1}
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="nav-flex">
+        <div class="logo-section">
+          <div class="nav-logo">AG</div>
+          <span class="nav-title">Ahmed E. Gomaa, Ph.D.</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link active">Projects</a></li>
+          <li><a href="publications.html" class="nav-link">Publications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="mobile-menu" onclick="toggleMobileNav()">☰</button>
+      </div>
+      <div class="mobile-nav" id="mobileNav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link active">Projects</a></li>
+          <li><a href="publications.html" class="nav-link">Publications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1><i class="fas fa-rocket"></i> Featured Projects</h1>
+    <p>Innovative solutions bridging biology, technology, and automation</p>
+  </header>
+
+  <main>
+    <section data-aos="fade-up">
+      <div class="card">
+        <h2>Hardware & Automation Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card featured-project" data-aos="zoom-in">
+            <div class="featured-badge"><i class="fas fa-star"></i> Featured Project</div>
+            <div class="project-image">
+              <div class="project-icon"><i class="fas fa-print"></i></div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">
+                <i class="fas fa-print"></i>
+                DIY 3D Bio Printer
+              </h3>
+              <p class="project-description">
+                Custom-built bioprinter with proprietary slicer software for food-printing textures and biological materials. Features precision extrusion control and temperature management for various biomaterials.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Arduino</span>
+                <span class="tech-tag">3D Printing</span>
+                <span class="tech-tag">Custom Software</span>
+                <span class="tech-tag">Bioengineering</span>
+              </div>
+              <div class="project-links">
+                <a href="https://projecthub.arduino.cc/Ahmed_EGomaa/diy-3d-bio-printer-884cb5" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> View Project
+                </a>
+                <a href="https://github.com/Ahmed-EGomaa" target="_blank" class="project-link secondary">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="project-image">
+              <div class="project-icon"><i class="fas fa-vials"></i></div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">
+                <i class="fas fa-vials"></i>
+                Microbial Bioreactor
+              </h3>
+              <p class="project-description">
+                Arduino-based automated fermenter and 6-unit chemostat design for microbial evolution experiments. Real-time monitoring and control of pH, temperature, and oxygen levels.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Arduino</span>
+                <span class="tech-tag">Sensors</span>
+                <span class="tech-tag">Automation</span>
+                <span class="tech-tag">Microbiology</span>
+              </div>
+              <div class="project-links">
+                <a href="https://create.arduino.cc/projecthub/Ahmed_EGomaa/microbial-bioreactor-biofermentor-d785e1" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> View Project
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="project-image">
+              <div class="project-icon"><i class="fas fa-microscope"></i></div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">
+                <i class="fas fa-microscope"></i>
+                Lens-Free Urine Crystals Detector
+              </h3>
+              <p class="project-description">
+                Handheld microscope with UVC/RGB illumination and AI-powered analysis for automatic crystal detection in urine samples. Portable diagnostic tool for medical applications.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Machine Learning</span>
+                <span class="tech-tag">Image Processing</span>
+                <span class="tech-tag">Medical Device</span>
+                <span class="tech-tag">Python</span>
+              </div>
+              <div class="project-links">
+                <a href="https://www.biordimsa.com/lens-free-urine-crystals-detector" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="project-image">
+              <div class="project-icon"><i class="fas fa-brain"></i></div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">
+                <i class="fas fa-brain"></i>
+                Flowtime Headband
+              </h3>
+              <p class="project-description">
+                GSR-based wearable device for anxiety detection and biofeedback conditioning. Real-time monitoring of stress levels with mobile app integration.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Wearables</span>
+                <span class="tech-tag">GSR Sensors</span>
+                <span class="tech-tag">Mobile App</span>
+                <span class="tech-tag">Biofeedback</span>
+              </div>
+              <div class="project-links">
+                <a href="https://www.biordimsa.com/flowtime-headband" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="card opensource-section">
+        <h2><i class="fab fa-github"></i> Open Source Contributions</h2>
+        <p class="small">Contributing to the maker and scientific communities through open-source hardware and software projects.</p>
+        
+        <div class="projects-grid" style="margin-top:24px">
+          <div class="project-card" data-aos="fade-up">
+            <div class="project-content">
+              <h3 class="project-title">
+                <i class="fab fa-arduino"></i>
+                Arduino Project Hub
+              </h3>
+              <p class="project-description">
+                Multiple featured projects on Arduino's official platform, including detailed tutorials and code for DIY lab equipment and automation systems.
+              </p>
+              <div class="project-links">
+                <a href="https://create.arduino.cc/projecthub/Ahmed_EGomaa" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> View Profile
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-content">
+              <h3 class="project-title">
+                <i class="fab fa-github"></i>
+                DIYEVOSERVER
+              </h3>
+              <p class="project-description">
+                Server software for managing automated evolution experiments with remote monitoring capabilities and data logging.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/Ahmed-EGomaa/DIYEVOSERVER" target="_blank" class="project-link">
+                  <i class="fab fa-github"></i> GitHub Repo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="card">
+        <h2><i class="fas fa-tools"></i> Skills & Technologies</h2>
+        <p class="small">The projects showcase expertise across multiple domains:</p>
+        
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:24px">
+          <div style="text-align:center;padding:20px;background:linear-gradient(135deg,#f8faff,#e8f2ff);border-radius:12px">
+            <div style="font-size:2.5rem;color:var(--accent);margin-bottom:12px"><i class="fas fa-microchip"></i></div>
+            <h4>Hardware Design</h4>
+            <p class="small">Arduino, Raspberry Pi, Custom PCBs, Sensor Integration</p>
+          </div>
+          
+          <div style="text-align:center;padding:20px;background:linear-gradient(135deg,#f8faff,#e8f2ff);border-radius:12px">
+            <div style="font-size:2.5rem;color:var(--accent);margin-bottom:12px"><i class="fas fa-code"></i></div>
+            <h4>Software Development</h4>
+            <p class="small">Python, C++, Mobile Apps, Web Interfaces</p>
+          </div>
+          
+          <div style="text-align:center;padding:20px;background:linear-gradient(135deg,#f8faff,#e8f2ff);border-radius:12px">
+            <div style="font-size:2.5rem;color:var(--accent);margin-bottom:12px"><i class="fas fa-cube"></i></div>
+            <h4>3D Design & Manufacturing</h4>
+            <p class="small">CAD Design, 3D Printing, Rapid Prototyping</p>
+          </div>
+          
+          <div style="text-align:center;padding:20px;background:linear-gradient(135deg,#f8faff,#e8f2ff);border-radius:12px">
+            <div style="font-size:2.5rem;color:var(--accent);margin-bottom:12px"><i class="fas fa-robot"></i></div>
+            <h4>AI & Machine Learning</h4>
+            <p class="small">TensorFlow, Computer Vision, Data Analysis</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© <span id="year">2025</span> Ahmed E. Gomaa • <a href="contact.html" style="color:var(--muted)">Contact</a></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 750, easing: 'ease-out-cubic', once: true });
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    function toggleMobileNav() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
