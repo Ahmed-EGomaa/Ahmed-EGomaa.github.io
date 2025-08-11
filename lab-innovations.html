@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Laboratory Innovations from Ahmed E. Gomaa's Prototyping Lab - Mini Bioreactors, Robotics, and IoT Molecular Lab Devices.">
+  <meta name="keywords" content="bioreactors, lab automation, IoT devices, molecular lab equipment, DIY instrumentation, MSA University">
+  <meta property="og:title" content="Laboratory Innovations - Ahmed E. Gomaa, Ph.D.">
+  <meta property="og:description" content="Explore innovative lab equipment and devices developed at the Prototyping Lab.">
+  <title>Laboratory Innovations — Ahmed E. Gomaa, Ph.D.</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+  <style>
+    :root{--accent:#7c5cff;--bg:#f4f6f8;--card:#ffffff;--muted:#556;--maxw:1200px;--success:#34d399;--warning:#fbbf24;--info:#60a5fa}
+    *{box-sizing:border-box}
+    body{font-family: 'Segoe UI', Tahoma, sans-serif;margin:0;background:var(--bg);color:#122;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    
+    /* Professional Navigation */
+    .top-nav{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.08);position:sticky;top:0;z-index:100}
+    .nav-container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    .nav-flex{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo-section{display:flex;align-items:center;gap:12px}
+    .nav-logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#4dd2ff);display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px}
+    .nav-title{color:#122;font-size:18px;font-weight:600}
+    .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+    .nav-link{color:#556;font-weight:500;padding:8px 16px;border-radius:6px;transition:all 0.3s ease}
+    .nav-link:hover,.nav-link.active{background:var(--accent);color:#fff;text-decoration:none}
+    
+    /* Mobile Navigation */
+    .mobile-menu{display:none}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid #e6e9ef;padding:20px}
+    .mobile-nav .nav-links{flex-direction:column;gap:10px}
+    .mobile-nav .nav-link{display:block;text-align:center}
+    
+    @media (max-width:768px){
+      .nav-links{display:none}
+      .mobile-menu{display:block;background:none;border:none;font-size:24px;color:#556;cursor:pointer}
+      .mobile-nav.active{display:block}
+    }
+    
+    header{background:linear-gradient(135deg,#0f1724,#202c49);color:#fff;padding:50px 20px;text-align:center}
+    .header-content h1{margin:0;font-size:2.5rem;margin-bottom:12px}
+    .header-subtitle{opacity:.9;font-size:1.2rem;line-height:1.4;max-width:600px;margin:0 auto}
+    
+    main{max-width:var(--maxw);margin:30px auto;padding:0 20px}
+    section{margin-bottom:50px}
+    .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 4px 20px rgba(16,24,40,0.08);border:1px solid rgba(0,0,0,0.05);transition:transform 0.3s ease,box-shadow 0.3s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(16,24,40,0.12)}
+    
+    .category-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px}
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:20px}
+    
+    .category-card{position:relative;overflow:hidden;min-height:280px}
+    .category-header{display:flex;align-items:center;gap:15px;margin-bottom:20px}
+    .category-icon{width:60px;height:60px;border-radius:12px;display:grid;place-items:center;font-size:28px;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+    .bioreactor-icon{background:linear-gradient(135deg,#34d399,#10b981)}
+    .robotics-icon{background:linear-gradient(135deg,#f59e0b,#d97706)}
+    .iot-icon{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+    
+    .product-card{background:#fff;border-radius:12px;padding:25px;border:1px solid #e5e7eb;position:relative;overflow:hidden}
+    .product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),#4dd2ff)}
+    .product-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:15px}
+    .product-title{font-size:1.1rem;font-weight:600;color:#1f2937;margin-bottom:5px}
+    .product-status{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
+    .status-prototype{background:#fef3c7;color:#92400e}
+    .status-production{background:#d1fae5;color:#065f46}
+    .status-development{background:#dbeafe;color:#1e40af}
+    
+    .product-description{color:#6b7280;font-size:14px;line-height:1.6;margin-bottom:15px}
+    .product-specs{background:#f9fafb;padding:15px;border-radius:8px;margin-bottom:15px}
+    .spec-item{display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px}
+    .spec-item:last-child{margin-bottom:0}
+    .spec-label{color:#6b7280;font-weight:500}
+    .spec-value{color:#1f2937;font-weight:600}
+    
+    .product-features{margin-bottom:20px}
+    .feature-list{list-style:none;padding:0;margin:10px 0 0 0}
+    .feature-item{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:14px;color:#4b5563}
+    .feature-item::before{content:'✓';color:var(--success);font-weight:bold;font-size:16px}
+    
+    .product-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn-small{padding:8px 16px;border-radius:6px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid;transition:all 0.3s ease;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+    .btn-primary-small{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .btn-primary-small:hover{background:#6a4ee6;transform:translateY(-1px);text-decoration:none}
+    .btn-secondary-small{background:#fff;color:#6b7280;border-color:#d1d5db}
+    .btn-secondary-small:hover{background:#f9fafb;color:#374151;text-decoration:none}
+    
+    h2{color:#122;font-size:2rem;margin-bottom:25px;border-bottom:3px solid var(--accent);padding-bottom:12px}
+    h3{color:#1f2937;font-size:1.4rem;margin-bottom:15px}
+    .small{font-size:.95rem;color:var(--muted);line-height:1.6}
+    
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:30px 0}
+    .stat-card{background:linear-gradient(135deg,#f8faff,#e8f2ff);padding:25px;border-radius:12px;text-align:center;border:1px solid #e1edff}
+    .stat-number{font-size:2.2rem;font-weight:700;color:var(--accent);margin-bottom:8px}
+    .stat-label{color:#6b7280;font-weight:500;font-size:14px}
+    
+    .innovation-highlight{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid #bae6fd;padding:25px;border-radius:12px;margin:30px 0}
+    .highlight-icon{width:50px;height:50px;background:linear-gradient(135deg,var(--info),#0284c7);border-radius:10px;display:grid;place-items:center;color:#fff;font-size:24px;margin-bottom:15px}
+    
+    footer{background:#fff;border-top:1px solid #e6e9ef;text-align:center;color:var(--muted);padding:40px 20px;margin-top:60px}
+    
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    .fade-in{animation:fadeInUp 0.6s ease forwards}
+    
+    @media (max-width:600px){
+      header{padding:30px 20px}
+      .header-content h1{font-size:2rem}
+      .category-grid{grid-template-columns:1fr}
+      .product-grid{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <!-- Professional Navigation -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="nav-flex">
+        <div class="logo-section">
+          <div class="nav-logo">AG</div>
+          <span class="nav-title">Ahmed E. Gomaa, Ph.D.</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="lab-innovations.html" class="nav-link active">Lab Innovations</a></li>
+          <li><a href="publications.html" class="nav-link">Publications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="mobile-menu" onclick="toggleMobileNav()">☰</button>
+      </div>
+      <div class="mobile-nav" id="mobileNav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="lab-innovations.html" class="nav-link active">Lab Innovations</a></li>
+          <li><a href="publications.html" class="nav-link">Publications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="header-content">
+      <h1>Laboratory Innovations</h1>
+      <div class="header-subtitle">Cutting-edge instruments and devices developed at the Prototyping Lab to advance synthetic biology research and democratize laboratory automation</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Lab Statistics -->
+    <section data-aos="fade-up">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Active Prototypes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">8</div>
+          <div class="stat-label">Production Ready</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Product Categories</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Research Applications</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Innovation Philosophy -->
+    <section data-aos="fade-up">
+      <div class="innovation-highlight">
+        <div class="highlight-icon">🔬</div>
+        <h3>Open Source Innovation</h3>
+        <p class="small">Our laboratory innovations are designed with accessibility and reproducibility in mind. Each device combines cutting-edge functionality with cost-effective manufacturing, enabling researchers worldwide to access advanced instrumentation regardless of budget constraints.</p>
+      </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section data-aos="fade-up">
+      <h2>Innovation Categories</h2>
+      <div class="category-grid">
+        <div class="card category-card">
+          <div class="category-header">
+            <div class="category-icon bioreactor-icon">⚗️</div>
+            <div>
+              <h3>Mini Bioreactors</h3>
+              <p class="small">Compact, automated bioreactor systems for microbial cultivation and adaptive laboratory evolution</p>
+            </div>
+          </div>
+          <ul class="feature-list">
+            <li class="feature-item">Real-time monitoring of pH, DO, temperature</li>
+            <li class="feature-item">Automated media feeding and sampling</li>
+            <li class="feature-item">Multi-vessel parallel processing</li>
+            <li class="feature-item">Cost-effective modular design</li>
+          </ul>
+        </div>
+
+        <div class="card category-card">
+          <div class="category-header">
+            <div class="category-icon robotics-icon">🤖</div>
+            <div>
+              <h3>Laboratory Robotics</h3>
+              <p class="small">Automated systems for high-throughput experimentation and precise liquid handling operations</p>
+            </div>
+          </div>
+          <ul class="feature-list">
+            <li class="feature-item">Precision pipetting and dispensing</li>
+            <li class="feature-item">Plate handling and incubation</li>
+            <li class="feature-item">Automated colony picking</li>
+            <li class="feature-item">Integration with existing workflows</li>
+          </ul>
+        </div>
+
+        <div class="card category-card">
+          <div class="category-header">
+            <div class="category-icon iot-icon">📡</div>
+            <div>
+              <h3>IoT Molecular Devices</h3>
+              <p class="small">Connected miniature instruments for real-time data collection and remote laboratory monitoring</p>
+            </div>
+          </div>
+          <ul class="feature-list">
+            <li class="feature-item">Wireless sensor networks</li>
+            <li class="feature-item">Cloud-based data analytics</li>
+            <li class="feature-item">Mobile app integration</li>
+            <li class="feature-item">Energy-efficient operation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mini Bioreactors -->
+    <section id="bioreactors" data-aos="fade-up">
+      <h2>Mini Bioreactor Systems</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-title">ALE-Reactor Pro</div>
+              <div class="product-status status-production">Production Ready</div>
+            </div>
+          </div>
+          <div class="product-description">
+            Advanced automated bioreactor system designed specifically for adaptive laboratory evolution experiments with continuous monitoring and control.
+          </div>
+          <div class="product-specs">
+            <div class="spec-item">
+              <span class="spec-label">Volume:</span>
+              <span class="spec-value">50-500 mL</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Vessels:</span>
+              <span class="spec-value">1-8 parallel</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Control:</span>
+              <span class="spec-value">pH, DO, Temp, Agitation</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Cost:</span>
+              <span class="spec-value">~$2,500</span>
+            </div>
+          </div>
+          <div class="product-features">
+            <ul class="feature-list">
+              <li class="feature-item">Automated media feeding system</li>
+              <li class="feature-item">Real-time growth monitoring</li>
+              <li class="feature-item">Data logging and analysis</li>
+            </ul>
+          </div>
+          <div class="product-actions">
+            <a href="#" class="btn-small btn-primary-small"><i class="fas fa-download"></i> Specs</a>
+            <a href="#" class="btn-small btn-secondary-small"><i class="fas fa-play"></i> Demo</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-title">MicroCulture Array</div>
+              <div class="product-status status-production">Production Ready</div>
+            </div>
+          </div>
+          <div class="product-description">
+            High-throughput miniaturized bioreactor platform for screening multiple conditions simultaneously in 96-well format.
+          </div>
+          <div class="product-specs">
+            <div class="spec-item">
+              <span class="spec-label">Volume:</span>
+              <span class="spec-value">1-10 mL per well</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Throughput:</span>
+              <span class="spec-value">96 conditions</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Monitoring:</span>
+              <span class="spec-value">OD, pH, O2</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Cost:</span>
+              <span class="spec-value">~$1,800</span>
+            </div>
+          </div>
+          <div class="product-features">
+            <ul class="feature-list">
+              <li class="feature-item">Automated optical density measurement</li>
+              <li class="feature-item">Temperature and shaking control</li>
+              <li class="feature-item">Integrated data analysis software</li>
+            </ul>
+          </div>
+          <div class="product-actions">
+            <a href="#" class="btn-small btn-primary-small"><i class="fas fa-download"></i> Specs</a>
+            <a href="#" class="btn-small btn-secondary-small"><i class="fas fa-image"></i> Gallery</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-title">FermenTrak Mini</div>
+              <div class="product-status status-prototype">Prototype</div>
+            </div>
+          </div>
+          <div class="product-description">
+            Compact benchtop fermentation system with advanced sensor integration for small-scale bioprocess development.
+          </div>
+          <div class="product-specs">
+            <div class="spec-item">
+              <span class="spec-label">Volume:</span>
+              <span class="spec-value">100-1000 mL</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Sensors:</span>
+              <span class="spec-value">pH, DO, CO2, Foam</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Control:</span>
+              <span class="spec-value">Automated</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Est. Cost:</span>
+              <span class="spec-value">~$3,200</span>
+            </div>
+          </div>
+          <div class="product-features">
+            <ul class="feature-list">
+              <li class="feature-item">Advanced foam control system</li>
+              <li class="feature-item">CO2 evolution rate monitoring</li>
+              <li class="feature-item">Machine learning optimization</li>
+            </ul>
+          </div>
+          <div class="product-actions">
+            <a href="#" class="btn-small btn-secondary-small"><i class="fas fa-flask"></i> In Development</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Laboratory Robotics -->
+    <section id="robotics" data-aos="fade-up">
+      <h2>Laboratory Robotics</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-title">PipetBot Precision</div>
+              <div class="product-status status-production">Production Ready</div>
+            </div>
+          </div>
+          <div class="product-description">
+            Automated liquid handling system with high-precision dispensing capabilities for molecular biology applications.
+          </div>
+          <div class="product-specs">
+            <div class="spec-item">
+              <span class="spec-label">Volume Range:</span>
+              <span class="spec-value">0.1 - 1000 μL</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Accuracy:</span>
+              <span class="spec-value">±0.5%</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Throughput:</span>
+              <span class="spec-value">384-well plates</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Cost:</span>
+              <span class="spec-value">~$4,500</span>
+            </div>
+          </div>
+          <div class="product-features">
+            <ul class="feature-list">
+              <li class="feature-item">8-channel parallel dispensing</li>
+              <li class="feature-item">Tip tracking and management</li>
+              <li class="feature-item">Protocol scripting interface</li>
+            </ul>
+          </div>
+          <div class="product-actions">
+            <a href="#" class="btn-small btn-primary-small"><i class="fas fa-download"></i> Manual</a>
+            <a href="#" class="btn-small btn-secondary-small"><i class="fas fa-video"></i> Tutorial</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-title">ColonyPicker Pro</div>
+              <div class="product-status status-production">Production Ready</div>
+            </div>
+          </div>
+          <div class="product-description">
+            Automated colony picking robot with computer vision for high-throughput strain isolation and library construction.
+          </div>
+          <div class="product-specs">
+            <div class="spec-item">
+              <span class="spec-label">Detection:</span>
+              <span class="spec-value">Computer Vision</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Throughput:</span>
+              <span class="spec-value">500+ colonies/hour</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Accuracy:</span>
+              <span class="spec-value">95%+</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Cost:</span>
+              <span class="spec-value">~$6,800</span>
+            </div>
+          </div>
+          <div class="product-features">
+            <ul class="feature-list">
+              <li class="feature-item">AI-powered colony recognition</li>
+              <li class="feature-item">Sterile picking mechanism</li>
+              <li class="feature-item">Multi-plate processing</li>
+            </ul>
+          </div>
+          <div class="product-actions">
+            <a href="#" class="btn-small btn-primary-small"><i class="fas fa-download"></i> Specs</a>
+            <a href="#" class="btn-small btn-secondary-small"><i class="fas fa-eye"></i> Vision Demo</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-title">PlateBot Handler</div>
+              <div class="product-status status-development">In Development</div>
+            </div>
+          </div>
+          <div class="product-description">
+            Robotic plate handling system for automated incubation, storage, and workflow management in high-throughput screening.
+          </div>
+          <div class="product-specs">
+            <div class="spec-item">
+              <span class="spec-label">Capacity:</span>
+              <span class="spec-value">200+ plates</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Integration:</span>
+              <span class="spec-value">Multi-device</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Control:</span>
+              <span class="spec-value">Automated scheduling</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Est. Cost:</span>
+              <span class="spec-value">~$8,500</span>
+            </div>
+          </div>
+          <div class="product-features">
+            <ul class="feature-list">
+              <li class="feature-item">RFID plate tracking</li>
+              <li class="feature-item">Climate-controlled storage</li>
+              <li class="feature-item">Workflow orchestration</li>
+            </ul>
+          </div>
+          <div class="product-actions">
+            <a href="#" class="btn-small btn-secondary-small"><i class="fas fa-cog"></i> In Progress</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IoT Molecular Devices -->
+    <section id="iot-devices" data-aos="fade-up">
+      <h2>IoT Molecular Lab Devices</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-title">LabSense Network</div>
+              <div class="product-status status-production">Production Ready</div>
+            </div>
+          </div>
+          <div class="product-description">
+            Wireless sensor network system for comprehensive laboratory environment monitoring with cloud integration.
+          </div>
+          <div class="product-specs">
+            <div class="spec-item">
+              <span class="spec-label">Sensors:</span>
+              <span class="spec-value">Temp, Humidity, CO2</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Range:</span>
+              <span class="spec-value">100m wireless</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Battery:</span>
+              <span class="spec-value">2+ years</span>
+            </div>
+            <div class
